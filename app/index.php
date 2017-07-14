@@ -4,25 +4,26 @@
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-    <title>QMSMS | Dashboard</title>
-
+    <title>QMSMS</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
    <!-- Bootstrap core CSS     -->
-    <link href="html/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Animation library for notifications   -->
-    <link href="html/assets/css/animate.min.css" rel="stylesheet"/>
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
     <!--  Light Bootstrap Table core CSS    -->
-    <link href="html/assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+    <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="html/assets/css/demo.css" rel="stylesheet" />
+    <link href="assets/css/demo.css" rel="stylesheet" />
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="html/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.js"></script>
+    <script src="scripts/app.js "></script>
 </head>
-<body>
+<body ng-app="myApp" ng-controller="myCtrl">
 
 <div class="wrapper">
     <div class="sidebar" data-color="red" data-image="">
@@ -35,13 +36,13 @@
             </div>
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="#!dashboard">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="../app/services.php">
+                    <a href="#!services">
                         <i class="pe-7s-user"></i>
                         <p>Services</p>
                     </a>
@@ -82,7 +83,6 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                  <i class="fa fa-external-link"></i>
@@ -119,82 +119,9 @@
             </div>
         </nav>
 
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Today Queue</h4>
-                                <p class="category">July 14, 2017</p>
-                            </div>
-                           <div class="content">
-                                <div class="footer">
-                                    <h2 class="text-success">300</h2>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-clock-o"></i> Updated last 2 minutes ago.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                     <div class="col-md-4">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Today Missed</h4>
-                                <p class="category">July 14, 2017</p>
-                            </div>
-                            <div class="content">
-                                <div class="footer">
-                                    <h2 class="text-warning">300</h2>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-clock-o"></i> Updated last 2 minutes ago.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
-                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Today Served</h4>
-                                <p class="category">July 14, 2017</p>
-                            </div>
-                            <div class="content">
-                                <div class="footer">
-                                    <h2 class="text-info">300</h2>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-clock-o"></i> Updated last 2 minutes ago.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Over Time</h4>
-                                <p class="category">July 14, 2017</p>
-                            </div>
-                           <div class="content">
-                                <div class="footer">
-                                    <h2 class="text-danger">300</h2>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-clock-o"></i> Updated last 2 minutes ago.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
-            </div>
-         </div>
+        <div ng-view class="content">
+           
+        </div>
         <footer class="footer">
             <div class="container-fluid">
                 <p class="copyright pull-left">
@@ -202,36 +129,21 @@
                 </p>
             </div>
         </footer>
-    </div>
+    </div>   
 </div>
 </body>
     <!--   Core JS Files   -->
-    <script src="html/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-    <script src="html/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
     <!--  Checkbox, Radio & Switch Plugins -->
-    <script src="html/assets/js/bootstrap-checkbox-radio-switch.js"></script>
+    <script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
     <!--  Charts Plugin -->
-    <script src="html/assets/js/chartist.min.js"></script>
+    <script src="assets/js/chartist.min.js"></script>
     <!--  Notifications Plugin    -->
-    <script src="html/assets/js/bootstrap-notify.js"></script>
+    <script src="assets/js/bootstrap-notify.js"></script>
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-    <script src="html/assets/js/light-bootstrap-dashboard.js"></script>
+    <script src="assets/js/light-bootstrap-dashboard.js"></script>
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $.notify({
-            icon: "fa fa-exclamation-triangle",
-            message: "<b>Something went wrong.</b>"
-        },{
-            type: 'danger',
-            timer: 4000,
-            placement: {
-                from: 'bottom',
-                align: 'right'
-            },
-            spacing: 10
-         });
-    });
-    </script>
+   
 </html>

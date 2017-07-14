@@ -10,9 +10,9 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <!-- Bootstrap core CSS     -->
-    <link href="app/html/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="app/html/assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="app/html/assets/css/login.css" rel="stylesheet" />
+    <link href="app/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="app/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="app/assets/css/login.css" rel="stylesheet" />
 </head>
 <body>
  <div class="wrapper">
@@ -26,13 +26,10 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
     </form>
 </div>
-
 </body>
-
     <!--   Core JS Files   -->
-    <script src="app/html/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-    <script src="app/html/assets/js/bootstrap.min.js" type="text/javascript"></script>
- 
-
+    <script src="app/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="app/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="app/scripts/app.js" type="text/javascript"></script>
 </html>
 
