@@ -2,7 +2,7 @@
     <div class="col-md-4">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Today Services</h4>
+                    <h4 class="title">Today Counter</h4>
                     <p class="category">July 14, 2017</p>
                 </div>
                <div class="content">

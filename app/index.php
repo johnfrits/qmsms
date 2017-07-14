@@ -22,8 +22,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.js"></script>
     <script src="scripts/app.js "></script>
+    <script src="scripts/dashboard.js "></script>
+  <!--   <script src="scripts/services.js "></script> -->
 </head>
-<body ng-app="myApp" ng-controller="myCtrl">
+<body ng-app="myApp">
 
 <div class="wrapper">
     <div class="sidebar" data-color="red" data-image="">
@@ -36,31 +38,31 @@
             </div>
             <ul class="nav">
                 <li class="active">
-                    <a href="#!dashboard">
+                    <a href="#/">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#!services">
+                    <a href="#services">
                         <i class="pe-7s-user"></i>
                         <p>Services</p>
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="#counter">
                         <i class="pe-7s-note2"></i>
                         <p>Counter</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
+                    <a href="#users">
                         <i class="pe-7s-news-paper"></i>
                         <p>Users</p>
                     </a>
                 </li>
                 <li>
-                    <a href="icons.html">
+                    <a href="#settings">
                         <i class="pe-7s-science"></i>
                         <p>Settings</p>
                     </a>
@@ -69,7 +71,7 @@
         </div>
     </div>
 
-    <div class="main-panel">
+    <div class="main-panel" ng-controller="dashboardController">
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -79,7 +81,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href="#">{{ title }}</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
