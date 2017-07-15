@@ -2,36 +2,40 @@
 
   'use strict'
 
-  angular.module( 'myApp', ['ngRoute'] )
+  angular.module( 'myApp', ['ngRoute', 'dashboardModule', 'servicesModule'] )
+    .run([
+      '$rootScope', '$location',
+      function run($rootScope, $location) {
+          $rootScope.location = $location;
+    }])
     .config(['$routeProvider', '$locationProvider',
-
       function ($routeProvider, $locationProvider) {
-
         $locationProvider.hashPrefix('');
         $routeProvider
 
-      .when("/", {
-        title : "QMSMS | Dashboard",
+      .when("/", {  
         templateUrl : "modules/dashboard/index.php",
-        controller : "dashboardController"
+        activetab: 'dashboard'
        })
       .when("/services", {
-        title : "QMSMS | Services",
         templateUrl : "modules/services/index.php"
       })
       .when("/counter", {
-        title : "QMSMS | Counter",
         templateUrl : "modules/counter/index.php"
       })
       .when("/users", {
-        title : "QMSMS | Users",
         templateUrl : "modules/users/index.php"
       })
        .when("/settings", {
-        title : "QMSMS | Services",
         templateUrl : "modules/settings/index.php"
-      })
-       
-  }]);
-
+      })   
+    }]) 
+    .factory('Page', function ($window) {
+      var title = 'QMSMS | ';
+      return {
+          setTitle: function (newTitle) {
+              $window.document.title = title + newTitle;
+          }
+      };
+    })
 })();

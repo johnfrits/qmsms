@@ -21,15 +21,42 @@
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.js"></script>
+     <!--   Core JS Files   -->
+    <script src="assets/js/jquery.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <!--  Checkbox, Radio & Switch Plugins -->
+    <script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
+    <!--  Charts Plugin -->
+    <script src="assets/js/chartist.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/bootstrap-notify.js"></script>
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+    <script src="assets/js/light-bootstrap-dashboard.js"></script>
+    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+    <!-- Custom JS -->
     <script src="scripts/app.js "></script>
-    <script src="scripts/dashboard.js "></script>
-  <!--   <script src="scripts/services.js "></script> -->
+    <script src="modules/dashboard/dashboard.js "></script>
+    <script src="modules/services/services.js "></script>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $("a[data-stateName]").click(function() {
+               $("#title-brand").text( $(this).attr("data-stateName") );
+            });
+
+            $(".nav li").on("click", function() {
+                $(".nav li").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+
+    </script>
 </head>
 <body ng-app="myApp">
 
 <div class="wrapper">
     <div class="sidebar" data-color="red" data-image="">
-        <div class="sidebar-wrapper">
+        <div class="sidebar-wrapper" >
             <div class="logo">
                 <row></row>
                 <a class="simple-text">
@@ -38,31 +65,31 @@
             </div>
             <ul class="nav">
                 <li class="active">
-                    <a href="#/">
+                    <a data-stateName="Dashboard" href="#/">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#services">
+                    <a data-stateName="Services" href="#services">
                         <i class="pe-7s-user"></i>
                         <p>Services</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#counter">
+                    <a data-stateName="Counter" href="#counter">
                         <i class="pe-7s-note2"></i>
                         <p>Counter</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#users">
+                    <a data-stateName="Users" href="#users">
                         <i class="pe-7s-news-paper"></i>
                         <p>Users</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#settings">
+                    <a data-stateName="Settings" href="#settings">
                         <i class="pe-7s-science"></i>
                         <p>Settings</p>
                     </a>
@@ -71,7 +98,7 @@
         </div>
     </div>
 
-    <div class="main-panel" ng-controller="dashboardController">
+    <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -81,7 +108,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">{{ title }}</a>
+                    <a style="font-weight: bold;"  class="navbar-brand" href="#" id="title-brand">Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -134,18 +161,4 @@
     </div>   
 </div>
 </body>
-    <!--   Core JS Files   -->
-    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <!--  Checkbox, Radio & Switch Plugins -->
-    <script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
-    <!--  Charts Plugin -->
-    <script src="assets/js/chartist.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-    <script src="assets/js/light-bootstrap-dashboard.js"></script>
-    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-
-   
 </html>

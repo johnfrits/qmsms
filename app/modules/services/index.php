@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" ng-controller="servicesController">
     <div class="col-md-4">
             <div class="card">
                 <div class="header">
