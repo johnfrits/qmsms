@@ -2,7 +2,7 @@
 
   'use strict'
 
-  angular.module( 'myApp', ['ngRoute', 'dashboardModule', 'servicesModule'] )
+  angular.module( 'myApp', ['ngRoute', 'dashboardModule', 'servicesModule', 'appModule'] )
     .run([
       '$rootScope', '$location',
       function run($rootScope, $location) {

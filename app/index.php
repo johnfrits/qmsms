@@ -19,6 +19,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <!--Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.js"></script>
      <!--   Core JS Files   -->
@@ -35,6 +36,7 @@
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <!-- Custom JS -->
     <script src="scripts/app.js "></script>
+    <script src="scripts/appController.js "></script>
     <script src="modules/dashboard/dashboard.js "></script>
     <script src="modules/services/services.js "></script>
     <script type="text/javascript">
@@ -98,7 +100,7 @@
         </div>
     </div>
 
-    <div class="main-panel">
+    <div class="main-panel" ng-controller = 'appController'>
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -129,7 +131,7 @@
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Johnfrits
+                                {{ loggedUser }}
                             <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
