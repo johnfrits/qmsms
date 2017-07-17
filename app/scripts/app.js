@@ -2,14 +2,10 @@
 
   'use strict'
 
-<<<<<<< HEAD
-  angular
+   angular
 
-    .module( 'myApp', ['ngRoute', 'dashboardModule', 'servicesModule'] )
+    .module( 'myApp', ['ngRoute', 'dashboardModule', 'servicesModule', 'appModule', 'counterModule', 'usersModule', 'settingsModule' ] )
 
-=======
-  angular.module( 'myApp', ['ngRoute', 'dashboardModule', 'servicesModule', 'appModule'] )
->>>>>>> origin/master
     .run([
       '$rootScope', '$location',
       function run($rootScope, $location) {
@@ -23,19 +19,23 @@
 
       .when("/", {  
         templateUrl : "modules/dashboard/index.php",
-        activetab: 'dashboard'
+        activetab: 'Dashboard'
        })
       .when("/services", {
-        templateUrl : "modules/services/index.php"
+        templateUrl : "modules/services/index.php",
+        activetab: 'Services'
       })
       .when("/counter", {
-        templateUrl : "modules/counter/index.php"
+        templateUrl : "modules/counter/index.php",
+        activetab: 'Counter'
       })
       .when("/users", {
-        templateUrl : "modules/users/index.php"
+        templateUrl : "modules/users/index.php",
+        activetab: 'Users'
       })
        .when("/settings", {
-        templateUrl : "modules/settings/index.php"
+        templateUrl : "modules/settings/index.php",
+        activetab: 'Settings'
       })   
     }]) 
 

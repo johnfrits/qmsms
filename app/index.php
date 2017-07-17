@@ -39,6 +39,10 @@
     <script src="scripts/appController.js "></script>
     <script src="modules/dashboard/dashboard.js "></script>
     <script src="modules/services/services.js "></script>
+    <script src="modules/counter/counter.js "></script>
+    <script src="modules/users/users.js "></script>
+    <script src="modules/settings/settings.js "></script>
+    <script src="scripts/screenfull.js "></script>
     <script type="text/javascript">
 
         $(document).ready(function() {
@@ -50,13 +54,22 @@
                 $(".nav li").removeClass("active");
                 $(this).addClass("active");
             });
+
+            $('.fullscreen').on('click', () => {
+
+                if(screenfull.isFullscreen){
+                    screenfull.exit();
+                }else{
+                    screenfull.request();
+                }
+            });
         });
 
     </script>
 </head>
 <body ng-app="myApp">
 
-<div class="wrapper">
+<div class="wrapper" ng-controller = 'appController'>
     <div class="sidebar" data-color="red" data-image="">
         <div class="sidebar-wrapper" >
             <div class="logo">
@@ -66,31 +79,31 @@
                 </a>
             </div>
             <ul class="nav">
-                <li class="active">
+                <li ng-class="{active: $route.current.activetab == 'Dashboard'}">
                     <a data-stateName="Dashboard" href="#/">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
+               <li ng-class="{active: $route.current.activetab == 'Services'}">
                     <a data-stateName="Services" href="#services">
                         <i class="pe-7s-user"></i>
-                        <p>Services</p>
+                        <p>Services</p> 
                     </a>
                 </li>
-                <li>
+                <li ng-class="{active: $route.current.activetab == 'Counter'}">
                     <a data-stateName="Counter" href="#counter">
                         <i class="pe-7s-note2"></i>
                         <p>Counter</p>
                     </a>
                 </li>
-                <li>
+                <li ng-class="{active: $route.current.activetab == 'Users'}">
                     <a data-stateName="Users" href="#users">
                         <i class="pe-7s-news-paper"></i>
                         <p>Users</p>
                     </a>
                 </li>
-                <li>
+                <li ng-class="{active: $route.current.activetab == 'Settings'}">
                     <a data-stateName="Settings" href="#settings">
                         <i class="pe-7s-science"></i>
                         <p>Settings</p>
@@ -100,7 +113,7 @@
         </div>
     </div>
 
-    <div class="main-panel" ng-controller = 'appController'>
+    <div class="main-panel" >
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -110,7 +123,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a style="font-weight: bold;"  class="navbar-brand" href="#" id="title-brand">Dashboard</a>
+                    <a style="font-weight: bold;"  class="navbar-brand" id="title-brand">Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -124,13 +137,13 @@
                                 <li><a href="#">Display Queue View</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li class="fullscreen">
                            <a href="#">
                                 <i class="fa fa-window-maximize"></i>
                             </a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">
                                 {{ loggedUser }}
                             <b class="caret"></b>
                             </a>
