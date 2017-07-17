@@ -2,12 +2,16 @@
 
   'use strict'
 
-  angular.module( 'myApp', ['ngRoute', 'dashboardModule', 'servicesModule'] )
+  angular
+
+    .module( 'myApp', ['ngRoute', 'dashboardModule', 'servicesModule'] )
+
     .run([
       '$rootScope', '$location',
       function run($rootScope, $location) {
           $rootScope.location = $location;
     }])
+
     .config(['$routeProvider', '$locationProvider',
       function ($routeProvider, $locationProvider) {
         $locationProvider.hashPrefix('');
@@ -30,12 +34,16 @@
         templateUrl : "modules/settings/index.php"
       })   
     }]) 
-    .factory('Page', function ($window) {
+
+    .factory('Page', 
+      function ($window) {
+
       var title = 'QMSMS | ';
-      return {
-          setTitle: function (newTitle) {
-              $window.document.title = title + newTitle;
+          return {
+            setTitle: 
+            function (newTitle) {
+                $window.document.title = title + newTitle;
           }
-      };
-    })
+        };
+      })
 })();
