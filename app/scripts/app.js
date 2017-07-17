@@ -2,10 +2,14 @@
 
   'use strict'
 
+<<<<<<< HEAD
   angular
 
     .module( 'myApp', ['ngRoute', 'dashboardModule', 'servicesModule'] )
 
+=======
+  angular.module( 'myApp', ['ngRoute', 'dashboardModule', 'servicesModule', 'appModule'] )
+>>>>>>> origin/master
     .run([
       '$rootScope', '$location',
       function run($rootScope, $location) {
