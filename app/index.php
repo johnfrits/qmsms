@@ -133,8 +133,8 @@
                             <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Display Users View</a></li>
-                                <li><a href="#">Display Queue View</a></li>
+                                <li><a href="customerview/" target="_blank">Display Users View</a></li>
+                                <li><a href="queueingview/" target="_blank"">Display Queue View</a></li>
                             </ul>
                         </li>
                         <li class="fullscreen">
@@ -154,7 +154,9 @@
                                     </a>
                                  </li>
                                 <li class="divider"></li>
-                                <li><a href="#">Settings</a></li>
+                                <li>
+                                  <a data-stateName="Settings" href="#settings"> Settings </a>
+                                </li>
                                 <li><a href="#">Logout</a></li>
                             </ul>
                         </li>
