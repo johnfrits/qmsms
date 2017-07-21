@@ -4,7 +4,7 @@
 
    angular
 
-    .module( 'myApp', ['ngRoute', 'dashboardModule', 'servicesModule', 'appModule', 'counterModule', 'usersModule', 'settingsModule' ] )
+    .module( 'myApp', ['ngRoute', 'dashboardModule', 'callModule', 'servicesModule', 'appModule', 'counterModule', 'usersModule', 'settingsModule' ] )
 
     .run([
       '$rootScope', '$location',
@@ -20,6 +20,10 @@
       .when("/", {  
         templateUrl : "modules/dashboard/index.php",
         activetab: 'Dashboard'
+       })
+      .when("/call", {  
+        templateUrl : "modules/call/index.php",
+        activetab: 'Call'
        })
       .when("/services", {
         templateUrl : "modules/services/index.php",

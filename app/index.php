@@ -38,6 +38,7 @@
     <script src="scripts/app.js "></script>
     <script src="scripts/appController.js "></script>
     <script src="modules/dashboard/dashboard.js "></script>
+    <script src="modules/call/call.js "></script>
     <script src="modules/services/services.js "></script>
     <script src="modules/counter/counter.js "></script>
     <script src="modules/users/users.js "></script>
@@ -83,6 +84,12 @@
                     <a data-stateName="Dashboard" href="#/">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
+                    </a>
+                </li>
+                <li ng-class="{active: $route.current.activetab == 'Call'}">
+                    <a data-stateName="Call" href="#call">
+                        <i class="pe-7s-call"></i>
+                        <p>Call</p>
                     </a>
                 </li>
                <li ng-class="{active: $route.current.activetab == 'Services'}">

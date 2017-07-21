@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>QMSMS</title>
+    <title>QMSMS | Queueing View</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
    <!-- Bootstrap core CSS     -->
@@ -32,66 +32,69 @@
 
     <!-- Custom JS -->
     <style type="text/css">
-    	body{
-    		overflow: hidden;
-    	}
-  		h1 {
-  			font-size: 7vw;
-  		}
-  		.wrapper{
-  			height: 100%;
-  			margin: 20px 20px 20px 20px;
-  		}
+      html, body{
+        overflow: hidden;
+      }
+      h1 {
+        font-size: 14vw;
+      }
+      h2 {
+        font-size: 7.7vw;
+      }
+      h3 {
+        font-size: 5vw;
+      }
+      h4 {
+        font-size: 3vw;
+      }
     </style>
 </head>
 <body>
 
-<div class="wrapper" >
-	<div class="col-md-4">
-		<div class="text-center">
-			<div class="panel-body">
-				<div class="panel panel-default">
-					<div class="panel-body">
-		       			<h1>
-		       				<b>A12</b>
-		       			</h1>
-					    <h3>COUNTER 1</h3>
-		 			</div>
-     			</div>
-     			<div class="panel panel-default">
-					<div class="panel-body">
-		       			<h1>
-		       				<b>A12</b>
-		       			</h1>
-					    <h3>COUNTER 1</h3>
-		 			</div>
-     			</div>
-     			<div class="panel panel-default">
-					<div class="panel-body">
-		       			<h1>
-		       				<b>A12</b>
-		       			</h1>
-					    <h3>COUNTER 1</h3>
-		 			</div>
-     			</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-8">
-		<div class="text-center">
-			<div class="panel-body">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<marquee> <h3> TESSSSSSST </h3> </marquee>
-		       			<h1>
-		       				<b>A12</b>
-		       			</h1>
-					    <h3>COUNTER 1</h3>
-		 			</div>
-     			</div>
-			</div>
-		</div>
-	</div>
-</div>
+<table class="table table-bordered text-center"> 
+  <tr>
+    <td class="col-xs-4 active" >
+      <div class="panel panel-primary">
+       <div class="panel-body">
+          <h2><b>A12</b></h2>
+            <h4>COUNTER 2</h4>
+        </div>
+      </div>
+    </td>
+    <td rowspan="3" class="col-xs-8">
+          <h2><b>Ticket Number</b></h2>
+          <h1><b>A12</b></h1>
+          <br><br>
+          <h3>Please Proceed To</h3>
+          <h3><b>COUNTER 2</b></h3>
+          </br>  </br>  </br>
+          <marquee >
+            <h3><b>A12 A12 A12</b> --- JULY 30, 2017 4:53AM --- QMSMS | DAVAO CITY HALL</h3> 
+          </marquee>
+    </td>
+  </tr>
+  <tr>
+    <td class="col-xs-4 active">
+      <div class="panel panel-default">
+       <div class="panel-body">
+        <h2><b>A12</b></h2>
+        <h4>COUNTER 2</h4>
+       </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="col-xs-4 active">
+      <div class="panel panel-default">
+       <div class="panel-body">
+        <h2><b>A12</b></h2>
+        <h4>COUNTER 2</h4>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
 </body>
 </html>
+
