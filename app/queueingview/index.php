@@ -33,13 +33,14 @@
     <!-- Custom JS -->
     <style type="text/css">
       html, body{
+        height: 100%;
         overflow: hidden;
       }
       h1 {
-        font-size: 14vw;
+        font-size: 13vw;
       }
       h2 {
-        font-size: 7.7vw;
+        font-size: 7vw;
       }
       h3 {
         font-size: 5vw;
@@ -47,54 +48,66 @@
       h4 {
         font-size: 3vw;
       }
+      h5 {
+        font-size: 2vw;
+        color: #FD4440;
+      }
     </style>
 </head>
 <body>
+<div class="wrapper">
+    <div class="container-fluid" style="margin-top: 10px;">
+        <div class="navbar-header">
+            <h5>QMSMS | DAVAO CITY HALL<h5>
+        </div>
+    </div>
 
-<table class="table table-bordered text-center"> 
-  <tr>
-    <td class="col-xs-4 active" >
-      <div class="panel panel-primary">
-       <div class="panel-body">
-          <h2><b>A12</b></h2>
+    <div class="content">
+      <table class="table table-bordered text-center"> 
+      <tr>
+        <td class="col-xs-4 active" style="padding-top: -20px;" >
+          <div class="panel panel-primary">
+           <div class="panel-body" >
+              <h2><b>A12</b></h2>
+                <h4>COUNTER 2</h4>
+            </div>
+          </div>
+        </td>
+        <td rowspan="3" class="col-xs-8">
+              <h2><b>Ticket Number</b></h2>
+              <h1><b>A12</b></h1>
+              <br><br>
+              <h3>Please Proceed To</h3>
+              <h3><b>COUNTER 2</b></h3>
+              </br>  </br>  </br>
+              <marquee >
+                <h3><b>A12 A12 A12</b> --- JULY 30, 2017 4:53AM --- QMSMS | DAVAO CITY HALL</h3> 
+              </marquee>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-4 active">
+          <div class="panel panel-default">
+           <div class="panel-body">
+            <h2><b>A12</b></h2>
             <h4>COUNTER 2</h4>
-        </div>
-      </div>
-    </td>
-    <td rowspan="3" class="col-xs-8">
-          <h2><b>Ticket Number</b></h2>
-          <h1><b>A12</b></h1>
-          <br><br>
-          <h3>Please Proceed To</h3>
-          <h3><b>COUNTER 2</b></h3>
-          </br>  </br>  </br>
-          <marquee >
-            <h3><b>A12 A12 A12</b> --- JULY 30, 2017 4:53AM --- QMSMS | DAVAO CITY HALL</h3> 
-          </marquee>
-    </td>
-  </tr>
-  <tr>
-    <td class="col-xs-4 active">
-      <div class="panel panel-default">
-       <div class="panel-body">
-        <h2><b>A12</b></h2>
-        <h4>COUNTER 2</h4>
-       </div>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td class="col-xs-4 active">
-      <div class="panel panel-default">
-       <div class="panel-body">
-        <h2><b>A12</b></h2>
-        <h4>COUNTER 2</h4>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
+           </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-4 active">
+          <div class="panel panel-default">
+           <div class="panel-body">
+            <h2><b>A12</b></h2>
+            <h4>COUNTER 2</h4>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </table>
+    </div>
+</div>
 </body>
 </html>
 
