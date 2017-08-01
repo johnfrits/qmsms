@@ -164,7 +164,7 @@
                                 <li>
                                   <a data-stateName="Settings" href="#settings"> Settings </a>
                                 </li>
-                                <li><a href="#">Logout</a></li>
+                                <li><a href="../app/php/logout.php">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
