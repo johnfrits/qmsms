@@ -1,3 +1,4 @@
+<?php include 'app/php/login.php' ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,7 +23,7 @@
 </head>
 <body>
  <div class="wrapper">
-    <form class="form-signin">       
+    <form class="form-signin" method="POST">       
       <h2 class="form-signin-heading">QMSMS</h2>
       <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
       <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
