@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2017 at 09:18 PM
+-- Generation Time: Aug 04, 2017 at 11:29 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -19,6 +19,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `qmsms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `calls`
+--
+
+CREATE TABLE IF NOT EXISTS `calls` (
+  `CallID` int(11) NOT NULL,
+  `QueueID` int(11) NOT NULL,
+  `CountersID` int(11) NOT NULL,
+  `UsersID` int(11) NOT NULL,
+  `CalledDateTime` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -50,11 +64,11 @@ CREATE TABLE IF NOT EXISTS `customers` (
 
 CREATE TABLE IF NOT EXISTS `queues` (
   `QueueID` int(11) NOT NULL,
-  `CustomerID` int(11) NOT NULL,
   `ServiceID` int(11) NOT NULL,
-  `UserID` int(11) NOT NULL,
+  `CustomerID` int(11) NOT NULL,
+  `TicketNumber` varchar(100) NOT NULL,
   `Called` bit(1) NOT NULL,
-  `DateTime` datetime NOT NULL
+  `CreatedDateTime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -82,6 +96,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Email` varchar(50) NOT NULL,
   `Role` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`UserID`, `Name`, `Username`, `Password`, `Email`, `Role`) VALUES
+(1, 'Frits', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'frats.frets.frits@gmail.com', 'Administrator');
 
 --
 -- Indexes for dumped tables

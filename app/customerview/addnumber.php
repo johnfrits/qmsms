@@ -34,19 +34,33 @@
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 
     <style type="text/css">
-        .content{
-            margin-top: 2%;
+        body  {
+            margin: 0; 
+            padding: 0;
+            text-align: center;
+          
         }
-        .panel{
-            background-color: #D94A4F;
-            padding-top: 50px;
-            font-size: 45px;
-            height: 200px;
-            border-radius: 20px;
+        .content{
+            margin: 0 auto;
+            width:  700px;
+            margin-top: 2%;
+            font-size: 40px;
+        }
+        input {
+          padding-top: 10px;
+          border: 0;
+          outline: 0;
+          background: transparent;
+          border-bottom: 1px solid black;
+          width: 100%;
+          text-align: center;
+          font-size: 45px;
         }
         a{
-            color: white;
+            color: #D94A4F;
         }
+
+
     </style>
 </head>
 <body>
@@ -57,98 +71,132 @@
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
                         <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
                     </button>
-                    <a style="font-weight: bold;"  class="navbar-brand" id="title-brand">Please choose a service.</a>
+                    <a style="font-weight: bold;"  class="navbar-brand" id="title-brand">Enter your phone number.</a>
+                </div>
+                <div class="navbar-header pull-right">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                    </button>
+                    <a href="../customerview" style="font-weight: bold;"  class="navbar-brand" id="title-brand">Go Back</a>
                 </div>
             </div>
         </nav>
 
         <div class="content">
-           <a href="addnumber.php">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          Finance 
-                        </div>
-                    </div>
-                </div>
-            </a>
+            <div class="form-group">
+                <label for="inputlg">Please input your mobile number and press ENTER key.</label>
+                <input id="inputlg" type="text" maxlength="11" autofocus="" >
+            </div>
             <a href="">
                 <div class="col-sm-4">
                     <div class="panel panel-default text-center">
                         <div class="panel-body">
-                          Finance 
+                          1
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="">
+             <a href="">
                 <div class="col-sm-4">
                     <div class="panel panel-default text-center">
                         <div class="panel-body">
-                          Finance 
+                          2
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="">
+             <a href="">
                 <div class="col-sm-4">
                     <div class="panel panel-default text-center">
                         <div class="panel-body">
-                          Finance 
+                         3
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="">
+             <a href="">
                 <div class="col-sm-4">
                     <div class="panel panel-default text-center">
                         <div class="panel-body">
-                          Finance 
+                          4 
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="">
+             <a href="">
                 <div class="col-sm-4">
                     <div class="panel panel-default text-center">
                         <div class="panel-body">
-                          Finance 
+                         5
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="">
+             <a href="">
                 <div class="col-sm-4">
                     <div class="panel panel-default text-center">
                         <div class="panel-body">
-                          Finance 
+                          6 
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="">
+             <a href="">
                 <div class="col-sm-4">
                     <div class="panel panel-default text-center">
                         <div class="panel-body">
-                          Finance 
+                          7 
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="">
+             <a href="">
                 <div class="col-sm-4">
                     <div class="panel panel-default text-center">
                         <div class="panel-body">
-                          Finance 
+                          8 
                         </div>
                     </div>
                 </div>
             </a>
-        </div>
+             <a href="">
+                <div class="col-sm-4">
+                    <div class="panel panel-default text-center">
+                        <div class="panel-body">
+                          9 
+                        </div>
+                    </div>
+                </div>
+            </a>
+             <a href="">
+                <div class="col-sm-4">
+                    <div class="panel panel-default text-center">
+                        <div class="panel-body">
+                          Clear 
+                        </div>
+                    </div>
+                </div>
+            </a>
+             <a href="">
+                <div class="col-sm-4">
+                    <div class="panel panel-default text-center">
+                        <div class="panel-body">
+                          0 
+                        </div>
+                    </div>
+                </div>
+            </a>
+             <a href="">
+                <div class="col-sm-4">
+                    <div class="panel panel-default text-center">
+                        <div class="panel-body">
+                          Enter 
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>  
 </div>
 </body>
 </html>
