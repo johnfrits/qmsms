@@ -32,7 +32,28 @@
     <!--  Notifications Plugin    -->
     <script src="../assets/js/bootstrap-notify.js"></script>
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+    <script>
+        
+    $(document).ready(function(){
+        $('.btn').click(function(){
+            var input = $('#inputlg');
 
+            if( input.val().length < 11 && $(this).val() != 'Clear' && $(this).val() != 'Enter' ){
+             
+                $('#inputlg').val($('#inputlg').val()+$(this).val());
+            }
+
+            if($(this).val() == 'Clear'){
+                $('#inputlg').val("");
+            }
+
+            if($(this).val() == 'Enter'){
+                alert("you've entered");
+            }
+        });
+    });
+
+    </script>
     <style type="text/css">
         body  {
             margin: 0; 
@@ -46,6 +67,9 @@
             margin-top: 2%;
             font-size: 40px;
         }
+        label{
+            font-weight: normal;
+        }
         input {
           padding-top: 10px;
           border: 0;
@@ -55,11 +79,11 @@
           width: 100%;
           text-align: center;
           font-size: 45px;
+          font-weight: bold;
         }
-        a{
-            color: #D94A4F;
+        button{
+            margin-top: 10px;
         }
-
 
     </style>
 </head>
@@ -88,114 +112,26 @@
                 <label for="inputlg">Please input your mobile number and press ENTER key.</label>
                 <input id="inputlg" type="text" maxlength="11" autofocus="" >
             </div>
-            <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          1
-                        </div>
-                    </div>
-                </div>
-            </a>
-             <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          2
-                        </div>
-                    </div>
-                </div>
-            </a>
-             <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                         3
-                        </div>
-                    </div>
-                </div>
-            </a>
-             <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          4 
-                        </div>
-                    </div>
-                </div>
-            </a>
-             <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                         5
-                        </div>
-                    </div>
-                </div>
-            </a>
-             <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          6 
-                        </div>
-                    </div>
-                </div>
-            </a>
-             <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          7 
-                        </div>
-                    </div>
-                </div>
-            </a>
-             <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          8 
-                        </div>
-                    </div>
-                </div>
-            </a>
-             <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          9 
-                        </div>
-                    </div>
-                </div>
-            </a>
-             <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          Clear 
-                        </div>
-                    </div>
-                </div>
-            </a>
-             <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          0 
-                        </div>
-                    </div>
-                </div>
-            </a>
-             <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          Enter 
-                        </div>
-                    </div>
-                </div>
-            </a>
+            <div class="row">
+                <button type="button" class="btn btn-danger col-sm-4" value="1"><h2>1</h2></button>
+                <button type="button" class="btn btn-danger col-sm-4" value="2"><h2>2</h2></button>
+                <button type="button" class="btn btn-danger col-sm-4" value="3"><h2>3</h2></button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-danger col-sm-4" value="4"><h2>4</h2></button>
+                <button type="button" class="btn btn-danger col-sm-4" value="5"> <h2>5</h2></button>
+                <button type="button" class="btn btn-danger col-sm-4" value="6"><h2>6</h2></button>
+            </div>
+             <div class="row">
+                <button type="button" class="btn btn-danger col-sm-4" value="7"><h2>7</h2></button>
+                <button type="button" class="btn btn-danger col-sm-4" value="8"><h2>8</h2></button>
+                <button type="button" class="btn btn-danger col-sm-4" value="9"><h2>9</h2></button>
+            </div>
+             <div class="row">
+                <button type="button" class="btn btn-danger col-sm-4" value="Clear"><h2>Clear</h2></button>
+                <button type="button" class="btn btn-danger col-sm-4" value="0"><h2>0</h2></button>
+                <button type="button" class="btn btn-danger col-sm-4" value="Enter"><h2>Enter</h2></button>
+            </div>
         </div>  
 </div>
 </body>
