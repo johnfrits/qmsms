@@ -65,89 +65,9 @@
                 </div>
             </div>
         </nav>
-
+       
         <div class="content">
-           <a href="addnumber.php">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          Finance 
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          Finance 
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          Finance 
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          Finance 
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          Finance 
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          Finance 
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          Finance 
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          Finance 
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-4">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-body">
-                          Finance 
-                        </div>
-                    </div>
-                </div>
-            </a>
+           <?php include '../php/populate_service.php'; ?>
         </div>
 </div>
 </body>

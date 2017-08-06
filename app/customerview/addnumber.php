@@ -131,30 +131,33 @@
                 </div>
               </div>
             </div>
-            <div class="form-group">
-                <label for="inputlg">Please input your mobile number and press ENTER key.</label>
-                <input id="myinput" type="text" maxlength="11" autofocus="" >
-            </div>
-            <div class="row">
-                <button type="button" class="btn btn-danger col-sm-4" value="1"><h2>1</h2></button>
-                <button type="button" class="btn btn-danger col-sm-4" value="2"><h2>2</h2></button>
-                <button type="button" class="btn btn-danger col-sm-4" value="3"><h2>3</h2></button>
-            </div>
-            <div class="row">
-                <button type="button" class="btn btn-danger col-sm-4" value="4"><h2>4</h2></button>
-                <button type="button" class="btn btn-danger col-sm-4" value="5"><h2>5</h2></button>
-                <button type="button" class="btn btn-danger col-sm-4" value="6"><h2>6</h2></button>
-            </div>
-             <div class="row">
-                <button type="button" class="btn btn-danger col-sm-4" value="7"><h2>7</h2></button>
-                <button type="button" class="btn btn-danger col-sm-4" value="8"><h2>8</h2></button>
-                <button type="button" class="btn btn-danger col-sm-4" value="9"><h2>9</h2></button>
-            </div>
-             <div class="row">
-                <button type="button" class="btn btn-danger col-sm-4" value="Clear"><h2>Clear</h2></button>
-                <button type="button" class="btn btn-danger col-sm-4" value="0"><h2>0</h2></button>
-                <button type="button" class="btn btn-danger col-sm-4" value="Enter"><h2>Enter</h2></button>
-            </div>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="inputlg">Please input your mobile number and press ENTER key.</label>
+                    <input id="myinput" type="text" maxlength="11" autofocus="" name="customerInput">
+                </div>
+                <div class="row">
+                    <button type="button" class="btn btn-danger col-sm-4" value="1"><h2>1</h2></button>
+                    <button type="button" class="btn btn-danger col-sm-4" value="2"><h2>2</h2></button>
+                    <button type="button" class="btn btn-danger col-sm-4" value="3"><h2>3</h2></button>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn btn-danger col-sm-4" value="4"><h2>4</h2></button>
+                    <button type="button" class="btn btn-danger col-sm-4" value="5"><h2>5</h2></button>
+                    <button type="button" class="btn btn-danger col-sm-4" value="6"><h2>6</h2></button>
+                </div>
+                 <div class="row">
+                    <button type="button" class="btn btn-danger col-sm-4" value="7"><h2>7</h2></button>
+                    <button type="button" class="btn btn-danger col-sm-4" value="8"><h2>8</h2></button>
+                    <button type="button" class="btn btn-danger col-sm-4" value="9"><h2>9</h2></button>
+                </div>
+                 <div class="row">
+                    <button type="button" class="btn btn-danger col-sm-4" value="Clear"><h2>Clear</h2></button>
+                    <button type="button" class="btn btn-danger col-sm-4" value="0"><h2>0</h2></button>
+                    <button type="button" class="btn btn-danger col-sm-4" value="Enter"><h2>Enter</h2></button>
+                </div>
+            </form>
+       
         </div>  
 </div>
 </body>
