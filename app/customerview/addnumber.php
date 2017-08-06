@@ -35,20 +35,26 @@
     <script>
         
     $(document).ready(function(){
+
+        var dt = new Date();
         $('.btn').click(function(){
-            var input = $('#inputlg');
+            var input = $('#myinput');
 
             if( input.val().length < 11 && $(this).val() != 'Clear' && $(this).val() != 'Enter' ){
              
-                $('#inputlg').val($('#inputlg').val()+$(this).val());
-            }
+                $('#myinput').val($('#myinput').val()+$(this).val());
+            }   
 
             if($(this).val() == 'Clear'){
-                $('#inputlg').val("");
+                $('#myinput').val("");
             }
 
             if($(this).val() == 'Enter'){
-                alert("you've entered");
+               $('#myModal').modal("show");
+               $('#datetime').text(dt);
+               $('#ticketNumber').text("A371");
+               $('#inputNumber').text(input.val());
+               $('#myinput').val("");
             }
         });
     });
@@ -59,7 +65,6 @@
             margin: 0; 
             padding: 0;
             text-align: center;
-          
         }
         .content{
             margin: 0 auto;
@@ -70,7 +75,7 @@
         label{
             font-weight: normal;
         }
-        input {
+        #myinput {
           padding-top: 10px;
           border: 0;
           outline: 0;
@@ -108,9 +113,27 @@
         </nav>
 
         <div class="content">
+              <div class="modal fade" role="dialog" id="myModal">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Thank you for using <b>QMSMS !<b></h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Your ticket number <b id="ticketNumber"></b> has been sent to your mobile number (<b id="inputNumber"></b>).</p>
+                    <p id="datetime"></p>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="../customerview" type="button" class="btn btn-default">Close</a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="form-group">
                 <label for="inputlg">Please input your mobile number and press ENTER key.</label>
-                <input id="inputlg" type="text" maxlength="11" autofocus="" >
+                <input id="myinput" type="text" maxlength="11" autofocus="" >
             </div>
             <div class="row">
                 <button type="button" class="btn btn-danger col-sm-4" value="1"><h2>1</h2></button>
@@ -119,7 +142,7 @@
             </div>
             <div class="row">
                 <button type="button" class="btn btn-danger col-sm-4" value="4"><h2>4</h2></button>
-                <button type="button" class="btn btn-danger col-sm-4" value="5"> <h2>5</h2></button>
+                <button type="button" class="btn btn-danger col-sm-4" value="5"><h2>5</h2></button>
                 <button type="button" class="btn btn-danger col-sm-4" value="6"><h2>6</h2></button>
             </div>
              <div class="row">
