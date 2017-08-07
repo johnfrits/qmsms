@@ -31,35 +31,8 @@
     <script src="../assets/js/chartist.min.js"></script>
     <!--  Notifications Plugin    -->
     <script src="../assets/js/bootstrap-notify.js"></script>
+    <script src="addticket.js"></script>
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-    <script>
-        
-    $(document).ready(function(){
-
-        var dt = new Date();
-        $('.btn').click(function(){
-            var input = $('#myinput');
-
-            if( input.val().length < 11 && $(this).val() != 'Clear' && $(this).val() != 'Enter' ){
-             
-                $('#myinput').val($('#myinput').val()+$(this).val());
-            }   
-
-            if($(this).val() == 'Clear'){
-                $('#myinput').val("");
-            }
-
-            if($(this).val() == 'Enter'){
-               $('#myModal').modal("show");
-               $('#datetime').text(dt);
-               $('#ticketNumber').text("A371");
-               $('#inputNumber').text(input.val());
-               $('#myinput').val("");
-            }
-        });
-    });
-
-    </script>
     <style type="text/css">
         body  {
             margin: 0; 
@@ -89,7 +62,30 @@
         button{
             margin-top: 10px;
         }
-
+        .modal-header-success {
+            color:#fff;
+            padding:9px 15px;
+            border-bottom:1px solid #eee;
+            background-color: #5cb85c;
+            -webkit-border-top-left-radius: 5px;
+            -webkit-border-top-right-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            -moz-border-radius-topright: 5px;
+             border-top-left-radius: 5px;
+             border-top-right-radius: 5px;
+        }
+        .modal-header-danger {
+            color:#fff;
+            padding:9px 15px;
+            border-bottom:1px solid #eee;
+            background-color: #d9534f;
+            -webkit-border-top-left-radius: 5px;
+            -webkit-border-top-right-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            -moz-border-radius-topright: 5px;
+             border-top-left-radius: 5px;
+             border-top-right-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -113,25 +109,42 @@
         </nav>
 
         <div class="content">
-              <div class="modal fade" role="dialog" id="myModal">
-              <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">Thank you for using <b>QMSMS !<b></h4>
-                  </div>
-                  <div class="modal-body">
-                    <p>Your ticket number <b id="ticketNumber"></b> has been sent to your mobile number (<b id="inputNumber"></b>).</p>
-                    <p id="datetime"></p>
-                  </div>
-                  <div class="modal-footer">
-                    <a href="../customerview" type="button" class="btn btn-default">Close</a>
-                  </div>
+            <div class="modal fade" role="dialog" id="myModalSuccess">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                    <div class="modal-header modal-header-success">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 class="modal-title">Thank you for using <b>QMSMS !<b></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your ticket number <b id="ticketNumber"></b> has been sent to your mobile number (<b id="inputNumber"></b>).</p>
+                        <p id="datetime"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="../customerview" type="button" class="btn btn-default">Close</a>
+                    </div>
+                    </div>
                 </div>
-              </div>
             </div>
-            <form method="POST">
+            <div class="modal fade" role="dialog" id="myModalError">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                    <div class="modal-header modal-header-danger">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h3 class="modal-title"><b>Please try again...<b></3>
+                    </div>
+                    <div class="modal-body">
+                        <p>Something is wrong with your number kindly check it again.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <form method="POST" id="addticket">
                 <div class="form-group">
                     <label for="inputlg">Please input your mobile number and press ENTER key.</label>
                     <input id="myinput" type="text" maxlength="11" autofocus="" name="customerInput">
