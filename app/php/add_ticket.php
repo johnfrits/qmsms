@@ -1,4 +1,5 @@
 <?php require_once 'db_connection/connection.php'; ?>
+<?php include 'text_ticket.php' ?>
 <?php 
 
  	$customerInput = $_GET['customerInput'];
@@ -50,18 +51,19 @@
     $sql = "INSERT INTO customers (PhoneNumber) 
     		VALUES ('$customerInput')";
 
-	if($con->query($sql) == TRUE){
+	if($con->query($sql) == TRUE ){
 		
 		$customerId = $con->insert_id;
 
 	   	$sql = "INSERT INTO queues (ServiceID, CustomerID, TicketNumber) 
 		  		VALUES ('$serviceId', '$customerId' ,'$ticketNumber')";
 
-		if($con->query($sql) == TRUE){
-
-
-
+		if(textTicket($customerInput, $ticketNumber) && $con->query($sql) == TRUE){
 			$data['status'] = 'success';
+			echo json_encode($data);	
+		}else{
+
+			$data['status'] = 'error';
 			echo json_encode($data);
 		}
 	}

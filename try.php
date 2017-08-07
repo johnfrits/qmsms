@@ -2,11 +2,11 @@
     $arr_post_body = array(
         "message_type" => "SEND",
         "mobile_number" => "639179545286",
-        "shortcode" => "29290498",
-        "message_id" => "1235511266770990",
-        "message" => urlencode("please text"),
-        "client_id" => "1dbb02adb7cf68912e45a95edd8907b54e1a0bd0453cec4ca4038028e7f4be31",
-        "secret_key" => "131951e241beba4e2142dfe722bba89e420870970a05efb22a150f60e05c9120"
+        "shortcode" => "292905464",
+        "message_id" => "11144112112312331241",
+        "message" => urlencode("hayssss"),
+        "client_id" => "757867ea2047771fea041a40684334dccee81cd07c81f006e556298e9eb42b00",
+        "secret_key" => "4f16aea773532b9cb9bf8330b8b34c8248b9b482255213c2504575faab8e4bcb"
     );
 
     $query_string = "";
@@ -25,11 +25,7 @@
     curl_setopt($curl_handler, CURLOPT_RETURNTRANSFER, TRUE);
     $response = curl_exec($curl_handler);
     curl_close($curl_handler);
-    echo $curl_handler;
     echo json_encode($response);
-    echo $query_string;
     exit(0);
-
-
 
 ?>
