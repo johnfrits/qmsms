@@ -135,7 +135,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">
                                  <i class="fa fa-external-link"></i>
                             <b class="caret"></b>
                             </a>
@@ -145,7 +145,7 @@
                             </ul>
                         </li>
                         <li class="fullscreen">
-                           <a href="#">
+                           <a href="">
                                 <i class="fa fa-window-maximize"></i>
                             </a>
                         </li>
