@@ -6,7 +6,7 @@
         $mobileNumber = (string)"63" . $str;
         $userTicket = (string)$ticket;
         $messageId = (string)mt_rand(1000000000, 9999999999);
-        $messageToUser = "Thanks for using QMSMS: Your Ticket Number: ".$userTicket." Please wait for your ticket number to be called.";
+        $messageToUser = "Thank you for using QMSMS: Your Ticket Number: ".$userTicket." Please wait for your ticket number to be called.";
         $arr_post_body = array(
             "message_type" => "SEND",
             "mobile_number" => $mobileNumber,
