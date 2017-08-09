@@ -10,7 +10,7 @@
 	function AppController2($scope, Page, $route) {
 
 		$scope.$route = $route;
-        $scope.loggedUser = "Fskts";
+        $scope.loggedUser = "Rodel";
         
     }
 
