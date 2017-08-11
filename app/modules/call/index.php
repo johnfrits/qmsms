@@ -24,7 +24,7 @@
                                         <th>Service</th>
                                         <th>Customer Number</th>
                                         <th>Ticket Number</th>
-                                        <th>Called</th>
+                                        <th>Status</th>
                                         <th>Queued Date</th>
                                     </thead>
                                         <?php populate_table();?>

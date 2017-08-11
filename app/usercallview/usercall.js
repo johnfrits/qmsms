@@ -1,28 +1,29 @@
 $(document).ready(function() {
 
   var userid = getParameterByName('userid');
+  var queueid = '';
 
   $('#callnext').click(function(){
      $.ajax({
         type: 'GET',
         url: '../php/call_ticket.php?usersID=' + userid + '', 
         success: function(response){
+          res = JSON.parse(response);
+          queueid = res['queueid'];
         }
      }); 
   });
-
-  $('#callagain').click(function(){
-     $.ajax({
-        type: 'GET',
-        url: '../php/call_ticket.php?userid=' + userid + '', 
-        success: function(response){
-          alert('try');
-        }
-     }); 
-  });
-
-
-
+  if(queueid != null){
+      $('#callagain').click(function(){
+       $.ajax({
+          type: 'GET',
+          url: '../php/call_ticket.php?usersID=' + userid + '&callagain=true' + '&queueid=' + queueid +'',
+          success: function(response){
+          }
+       }); 
+    });
+  }
+  
   function getParameterByName(name, url) {
 
     if (!url) url = window.location.href;

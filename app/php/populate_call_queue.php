@@ -25,7 +25,7 @@
 	                <td>'. $row['Name'] .'</td>
 	                <td>'. $row['PhoneNumber'] .'</td>
 	                <td>'. $row['TicketNumber'] .'</td>
-	                <td>'. $row['Called'] .'</td>
+	                <td>'. ($row['Called'] == 1 ? 'Called' : 'Not Called') .'</td>
 	                <td>'. $row['CreatedDateTime'] .'</td>
 	            </tr>
 	        </tbody>';

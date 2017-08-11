@@ -2,40 +2,52 @@
 <?php
  	
  	$data = array();
+	if(isset($_GET['usersID'])){
 
-	// if(isset($_GET['usersID'])){
-
-		$userid = 2;
+		$userid = $_GET['usersID'];
+		$callagain = isset($_GET['callagain']) ? true : false;
 		$queueid = '';
-		$currentId = '';
 
-		$sql = 'SELECT * 
-		FROM calls 
-		WHERE CalledDateTime 
-		= (	SELECT MAX(	CalledDateTime ) as CalledDateTime 
-			FROM calls )';
+		if($callagain == true){
+			if(isset($_GET['queueid'])){
+				$queueid = $_GET['queueid'];
 
-		$result = $con->query($sql);
+				$sql = 'SELECT * 	
+						FROM queues 
+						WHERE QueueID = '.$queueid.'';
 
-		while ($row = $result->fetch_assoc()) {
-			$currentId = $row['QueueID'];
+				$result = $con->query($sql);
+
+				while ($row = $result->fetch_assoc()) {
+					$queueid = $row['QueueID'];
+				}
+
+				$sql = "INSERT INTO calls (QueueID, CountersID, UsersID) 
+					VALUES ( '$queueid', 2, '$userid' ) ";
+
+				if($con->query($sql) == TRUE ){
+					$data['status'] = 'success';
+					echo json_encode($data);	
+				}else{
+					$data['status'] = 'error';
+					echo json_encode($data);
+				}	
+			}
 		}
-		echo $currentId;
+		if($callagain == false){
 
-		$sql = 'SELECT * 
-		FROM queues 
-		WHERE CreatedDateTime 
-		= (	SELECT MIN(	CreatedDateTime ) as CreatedDateTime 
-			FROM queues WHERE Called = 0 )';
+			$sql = 'SELECT * 
+					FROM queues 
+					WHERE CreatedDateTime 
+					= (	SELECT MIN(	CreatedDateTime ) as CreatedDateTime 
+						FROM queues 
+						WHERE Called = 0)';
 
-		$result = $con->query($sql);
+			$result = $con->query($sql);
 
-		while ($row = $result->fetch_assoc()) {
-			$queueid = $row['QueueID'];
-		}
-		echo $queueid;
-
-		if($currentId == $queueid){
+			while ($row = $result->fetch_assoc()) {
+				$queueid = $row['QueueID'];
+			}
 
 			$sql = "UPDATE queues
 					SET Called = 1   
@@ -43,21 +55,18 @@
 
 			if($con->query($sql) == TRUE){
 
-			
-			}
-		}		
-		else{
-			
-			$sql = "INSERT INTO calls (QueueID, CountersID, UsersID) 
-				VALUES ( '$queueid', 2, '$userid' ) ";
+				$sql = "INSERT INTO calls (QueueID, CountersID, UsersID) 
+					VALUES ( '$queueid', 2, '$userid' ) ";
 
-			if($con->query($sql) == TRUE ){
-				$data['status'] = 'success';
-				echo json_encode($data);	
-			}else{
-				$data['status'] = 'error';
-				echo json_encode($data);
+				if($con->query($sql) == TRUE ){
+					$data['status'] = 'success';
+					$data['queueid'] = $queueid;
+					echo json_encode($data);	
+				}else{
+					$data['status'] = 'error';
+					echo json_encode($data);
+				}
 			}
 		}
-	//}
+	}
 ?>	
