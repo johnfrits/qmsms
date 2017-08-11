@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2017 at 10:10 PM
+-- Generation Time: Aug 11, 2017 at 12:28 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -33,8 +33,20 @@ CREATE TABLE `calls` (
   `QueueID` int(11) NOT NULL,
   `CountersID` int(11) NOT NULL,
   `UsersID` int(11) NOT NULL,
-  `CalledDateTime` datetime NOT NULL
+  `CalledDateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `calls`
+--
+
+INSERT INTO `calls` (`CallID`, `QueueID`, `CountersID`, `UsersID`, `CalledDateTime`) VALUES
+(33, 1, 2, 2, '2017-08-11 16:57:32'),
+(34, 1, 2, 2, '2017-08-11 16:58:17'),
+(35, 1, 2, 2, '2017-08-11 17:06:43'),
+(37, 13, 2, 2, '2017-08-11 18:20:39'),
+(38, 14, 2, 2, '2017-08-11 18:26:13'),
+(39, 15, 2, 2, '2017-08-11 18:26:33');
 
 -- --------------------------------------------------------
 
@@ -44,8 +56,16 @@ CREATE TABLE `calls` (
 
 CREATE TABLE `counters` (
   `CountersID` int(11) NOT NULL,
-  `Name` int(11) NOT NULL
+  `Name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `counters`
+--
+
+INSERT INTO `counters` (`CountersID`, `Name`) VALUES
+(1, 'Counter 1'),
+(2, 'Counter 2');
 
 -- --------------------------------------------------------
 
@@ -91,7 +111,13 @@ INSERT INTO `customers` (`CustomerID`, `PhoneNumber`) VALUES
 (26, '09179545286'),
 (27, '88888888888'),
 (28, '09179545286'),
-(29, '09179545286');
+(29, '09179545286'),
+(30, '09179545286'),
+(31, '09104095072'),
+(32, '09179545286'),
+(33, '09179545286'),
+(34, '09179545286'),
+(35, '09179545286');
 
 -- --------------------------------------------------------
 
@@ -113,39 +139,20 @@ CREATE TABLE `queues` (
 --
 
 INSERT INTO `queues` (`QueueID`, `ServiceID`, `CustomerID`, `TicketNumber`, `Called`, `CreatedDateTime`) VALUES
-(1, 1, 1, 1001, b'0', '2017-08-06 18:48:49'),
-(4, 2, 1, 2002, b'0', '2017-08-06 23:27:33'),
-(5, 2, 1, 2003, b'0', '2017-08-06 23:30:18'),
-(7, 2, 1, 2004, b'0', '2017-08-06 23:31:22'),
-(8, 3, 1, 3001, b'0', '2017-08-06 23:56:06'),
-(9, 3, 1, 3002, b'0', '2017-08-06 23:56:46'),
-(10, 3, 1, 3003, b'0', '2017-08-07 00:09:03'),
-(11, 3, 1, 3004, b'0', '2017-08-07 00:10:07'),
-(12, 3, 1, 3005, b'0', '2017-08-07 00:10:28'),
-(13, 3, 1, 3006, b'0', '2017-08-07 00:20:42'),
-(14, 3, 1, 3007, b'0', '2017-08-07 00:21:04'),
+(13, 3, 1, 3006, b'1', '2017-08-07 00:20:42'),
+(14, 3, 1, 3007, b'1', '2017-08-07 00:21:04'),
 (15, 3, 1, 3008, b'0', '2017-08-07 01:36:58'),
 (16, 3, 8, 3009, b'0', '2017-08-07 02:11:21'),
-(17, 2, 9, 2005, b'0', '2017-08-08 00:41:21'),
-(18, 1, 10, 1002, b'0', '2017-08-08 02:36:27'),
-(19, 2, 11, 2006, b'0', '2017-08-08 02:36:43'),
-(20, 2, 12, 2007, b'0', '2017-08-08 02:37:19'),
-(21, 1, 13, 1003, b'0', '2017-08-08 02:54:56'),
-(22, 1, 14, 1004, b'0', '2017-08-08 02:56:11'),
-(23, 1, 15, 1005, b'0', '2017-08-08 02:58:20'),
-(24, 1, 16, 1006, b'0', '2017-08-08 03:01:09'),
-(25, 1, 17, 1007, b'0', '2017-08-08 03:18:31'),
 (26, 3, 18, 3010, b'0', '2017-08-08 03:19:09'),
-(27, 1, 19, 1008, b'0', '2017-08-08 03:21:35'),
-(28, 1, 20, 1009, b'0', '2017-08-08 03:25:38'),
-(29, 1, 21, 1010, b'0', '2017-08-08 03:28:42'),
-(30, 1, 22, 1011, b'0', '2017-08-08 03:29:02'),
 (31, 3, 23, 3011, b'0', '2017-08-08 03:32:35'),
 (32, 3, 24, 3012, b'0', '2017-08-08 03:37:34'),
 (33, 3, 25, 3013, b'0', '2017-08-08 03:40:46'),
 (34, 3, 26, 3014, b'0', '2017-08-08 03:43:30'),
 (35, 3, 28, 3015, b'0', '2017-08-08 04:05:28'),
-(36, 1, 29, 1012, b'0', '2017-08-08 04:08:10');
+(38, 3, 31, 3016, b'0', '2017-08-08 18:02:42'),
+(39, 3, 32, 3017, b'0', '2017-08-10 03:06:27'),
+(41, 3, 34, 3018, b'0', '2017-08-10 18:53:01'),
+(42, 1, 35, 1002, b'0', '2017-08-11 17:43:06');
 
 -- --------------------------------------------------------
 
@@ -180,15 +187,17 @@ CREATE TABLE `users` (
   `Username` varchar(20) NOT NULL,
   `Password` longtext NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Role` varchar(20) NOT NULL
+  `Role` varchar(20) NOT NULL,
+  `AssignedCounterID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UserID`, `Name`, `Username`, `Password`, `Email`, `Role`) VALUES
-(1, 'Frits', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'frats.frets.frits@gmail.com', 'Administrator');
+INSERT INTO `users` (`UserID`, `Name`, `Username`, `Password`, `Email`, `Role`, `AssignedCounterID`) VALUES
+(1, 'Frits', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'frats.frets.frits@gmail.com', 'Administrator', 1),
+(2, 'Jade Sira Ulo', 'Jade', '33f5a7e8f4f310f9774894d807728e3c', 'jade@gmail.com', 'Staff', 2);
 
 --
 -- Indexes for dumped tables
@@ -238,22 +247,32 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `calls`
 --
 ALTER TABLE `calls`
-  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+--
+-- AUTO_INCREMENT for table `counters`
+--
+ALTER TABLE `counters`
+  MODIFY `CountersID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `queues`
 --
 ALTER TABLE `queues`
-  MODIFY `QueueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `QueueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `ServiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+  MODIFY `ServiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
