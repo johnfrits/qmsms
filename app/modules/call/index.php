@@ -1,3 +1,4 @@
+<?php session_start();?>
 <?php include '../../php/populate_call_queue.php'; ?>
 <div class="row" ng-controller = 'callController'>
     <div style="margin: -10px 20px 20px 20px;">
@@ -7,9 +8,13 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                 <a href="usercallview?userid=1" target="_blank" type="button" class="btn btn-info">
-                                    <span class="fa fa-phone" aria-hidden="true"></span>
-                                </a>
+                                <?php 
+                                    if(isset($_SESSION['userID'])) {
+                                        echo '<a href="usercallview?userid='.$_SESSION['userID'].'" target="_blank" type="button" class="btn btn-info">
+                                              <span class="fa fa-phone" aria-hidden="true"></span>
+                                              </a>';
+                                      } 
+                                ?>
                                <h2>Todays Queue</h2>
                                 <p class="Date">Last Updated: Date: <b>August 9 2017</b> -- Time: <b>7:30 AM</b></p>
                             </div>

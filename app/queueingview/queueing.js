@@ -1,4 +1,3 @@
-
 function checkcall() {
       $.ajax({
           type: "GET",
@@ -6,9 +5,9 @@ function checkcall() {
           cache: false,
           success: function(response) {
               res = JSON.parse(response);
-              if (curr!=res["CallID"][0]) {
-                  alert('new insert');
-                  curr =res["CallID"][0];
+              if (curr!= res["CallID"]) {
+                  curr = res["CallID"];
+        
               }
           }
       });
@@ -25,8 +24,7 @@ function checkcall() {
           cache: false,
           success: function(response) {
               res = JSON.parse(response);
-              curr = res["CallID"][0];
-              alert(curr);
+              curr = res["CallID"];
           }
       });
       checkcall();
