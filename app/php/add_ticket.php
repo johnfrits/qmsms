@@ -18,8 +18,7 @@
 
 		$sql = "SELECT MAX(TicketNumber) as TicketNumber
 				FROM queues 
-				WHERE ServiceID = '$serviceId'
-				AND Called = 0";
+				WHERE ServiceID = '$serviceId'";
 
 		$result = $con->query($sql);
 
