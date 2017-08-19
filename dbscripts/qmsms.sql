@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2017 at 09:42 PM
+-- Generation Time: Aug 19, 2017 at 04:35 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -191,7 +191,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `calls`
 --
 ALTER TABLE `calls`
-  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `counters`
 --
