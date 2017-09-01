@@ -152,13 +152,21 @@
                         </li>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                                {{ loggedUser }}
+                              <?php 
+                                    if(isset($_SESSION['Name'])) {
+                                        echo $_SESSION['Name'];
+                                      } 
+                                ?>
                             <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>   
                                     <a class="simple-text">
-                                        Administrator
+                                    <?php 
+                                        if(isset($_SESSION['Role']) && isset($_SESSION['AssignedCounterID'])) {
+                                            echo $_SESSION['Role'] . ' | Counter ' . $_SESSION['AssignedCounterID'] ;
+                                        } 
+                                     ?>
                                     </a>
                                  </li>
                                 <li class="divider"></li>

@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2017 at 04:35 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Sep 01, 2017 at 11:40 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -34,6 +36,19 @@ CREATE TABLE `calls` (
   `CalledDateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `calls`
+--
+
+INSERT INTO `calls` (`CallID`, `QueueID`, `CountersID`, `UsersID`, `CalledDateTime`) VALUES
+(1, 48, 2, 1, '2017-09-01 12:01:20'),
+(2, 48, 2, 1, '2017-09-01 12:01:33'),
+(3, 49, 2, 1, '2017-09-01 14:15:39'),
+(4, 49, 2, 1, '2017-09-01 14:15:45'),
+(5, 49, 2, 1, '2017-09-01 15:16:45'),
+(6, 50, 2, 1, '2017-09-01 16:47:48'),
+(7, 50, 2, 1, '2017-09-01 16:48:51');
+
 -- --------------------------------------------------------
 
 --
@@ -42,16 +57,17 @@ CREATE TABLE `calls` (
 
 CREATE TABLE `counters` (
   `CountersID` int(11) NOT NULL,
-  `Name` varchar(50) NOT NULL
+  `Name` varchar(50) NOT NULL,
+  `AssignedService` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `counters`
 --
 
-INSERT INTO `counters` (`CountersID`, `Name`) VALUES
-(1, 'Counter 1'),
-(2, 'Counter 2');
+INSERT INTO `counters` (`CountersID`, `Name`, `AssignedService`) VALUES
+(1, 'Counter 1', 1),
+(2, 'Counter 2', 2);
 
 -- --------------------------------------------------------
 
@@ -71,7 +87,8 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` (`CustomerID`, `PhoneNumber`) VALUES
 (44, '09179545286'),
 (45, '09425677739'),
-(46, '09179545286');
+(46, '09179545286'),
+(47, '09179545286');
 
 -- --------------------------------------------------------
 
@@ -93,9 +110,10 @@ CREATE TABLE `queues` (
 --
 
 INSERT INTO `queues` (`QueueID`, `ServiceID`, `CustomerID`, `TicketNumber`, `Called`, `CreatedDateTime`) VALUES
-(48, 2, 44, 2001, 0, '2017-08-12 03:00:26'),
-(49, 4, 45, 5001, 0, '2017-08-12 03:05:35'),
-(50, 3, 46, 3001, 0, '2017-08-12 03:16:42');
+(48, 2, 44, 2001, 1, '2017-08-12 03:00:26'),
+(49, 4, 45, 5001, 1, '2017-08-12 03:05:35'),
+(50, 3, 46, 3001, 1, '2017-08-12 03:16:42'),
+(51, 2, 47, 2002, 0, '2017-09-01 11:32:47');
 
 -- --------------------------------------------------------
 
@@ -191,7 +209,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `calls`
 --
 ALTER TABLE `calls`
-  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `counters`
 --
@@ -201,12 +219,12 @@ ALTER TABLE `counters`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `queues`
 --
 ALTER TABLE `queues`
-  MODIFY `QueueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `QueueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `services`
 --
@@ -216,7 +234,8 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

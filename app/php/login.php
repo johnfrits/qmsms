@@ -17,9 +17,12 @@
 		if($result->num_rows == 1){
 
 			while($row = $result->fetch_assoc()){
-				$Name 	= $row['Name'];
-				$Role 	= $row['Role'];
-				$_SESSION['userID'] = $row['UserID'];
+
+				$_SESSION['userID']  				= $row['UserID'];
+				$_SESSION['Role'] 	 				= $row['Role'];
+				$_SESSION['Name']   	 			= $row['Name'];
+				$_SESSION['AssignedCounterID']    	= $row['AssignedCounterID'];
+				//go to app
 				header('Location: app/');
 			}
 		}
