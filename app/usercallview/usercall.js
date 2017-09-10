@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   var userid = getParameterByName('userid');
-  var queueid = '';
+  var queueid = ''; 
 
   $('#callnext').click(function(){
      $.ajax({
@@ -23,6 +23,7 @@ $(document).ready(function() {
        }); 
     });
   }
+
   
   function getParameterByName(name, url) {
 
@@ -35,5 +36,6 @@ $(document).ready(function() {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
     
   }
+
 
 });

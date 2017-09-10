@@ -6,15 +6,29 @@
 
 		$userid = $_GET['usersID'];
 		$callagain = isset($_GET['callagain']) ? true : false;
+		$counterid = $_GET['counterid'];
 		$queueid = '';
+		$serviceid = '';
+
+		$sql = 'SELECT *
+				FROM counters
+				WHERE CountersID = '.$counterid.'';
+
+		$result = $con->query($sql);
+		
+		while ($row = $result->fetch_assoc()) {
+			$serviceid = $row['AssignedService'];
+		}
 
 		if($callagain == true){
 			if(isset($_GET['queueid'])){
+				
 				$queueid = $_GET['queueid'];
 
-				$sql = 'SELECT * 	
+				$sql = "SELECT * 	
 						FROM queues 
-						WHERE QueueID = '.$queueid.'';
+						WHERE QueueID = '.$queueid.'
+						AND ServiceID = '.$serviceid.'";
 
 				$result = $con->query($sql);
 
