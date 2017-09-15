@@ -63,8 +63,8 @@
         <td class="col-xs-4 active" >
           <div class="panel panel-primary">
             <div class="panel-body" >
-              <h2><b>NULL</b></h2>
-              <h4>NULL</h4>
+              <h2 id="hcolumn1"><b>NULL</b></h2>
+              <h4 id="tcolumn1">NULL</h4>
             </div>
           </div>
         </td>
@@ -83,16 +83,16 @@
         <td class="col-xs-4 active">
           <div class="panel panel-default">
            <div class="panel-body">
-            <h2><b>NULL</b></h2>
-            <h4>NULL</h4>
+            <h2 id="hcolumn2"><b>NULL</b></h2>
+            <h4 id="tcolumn2">NULL</h4>
            </div>
           </div>
         </td>
       </tr>
       <tr>
         <td class="col-xs-4 active">
-          <div class="panel panel-default">
-          <div class="panel-body">
+          <div id="hcolumn3" class="panel panel-default">
+          <div id="tcolumn3" class="panel-body">
             <h2><b>NULL</b></h2>
             <h4>NULL</h4>
           </div>

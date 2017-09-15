@@ -80,44 +80,78 @@
                     <b>QMSMS</b> | Davao City Hall
                 </a>
             </div>
-            <ul class="nav">
-                <li ng-class="{active: $route.current.activetab == 'Dashboard'}">
-                    <a data-stateName="Dashboard" href="#/">
-                        <i class="pe-7s-graph"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li ng-class="{active: $route.current.activetab == 'Call'}">
-                    <a data-stateName="Call" href="#call">
-                        <i class="pe-7s-call"></i>
-                        <p>Call</p>
-                    </a>
-                </li>
-               <li ng-class="{active: $route.current.activetab == 'Services'}">
-                    <a data-stateName="Services" href="#services">
-                        <i class="pe-7s-user"></i>
-                        <p>Services</p> 
-                    </a>
-                </li>
-                <li ng-class="{active: $route.current.activetab == 'Counter'}">
-                    <a data-stateName="Counter" href="#counter">
-                        <i class="pe-7s-note2"></i>
-                        <p>Counter</p>
-                    </a>
-                </li>
-                <li ng-class="{active: $route.current.activetab == 'Users'}">
-                    <a data-stateName="Users" href="#users">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Users</p>
-                    </a>
-                </li>
-                <li ng-class="{active: $route.current.activetab == 'Settings'}">
-                    <a data-stateName="Settings" href="#settings">
-                        <i class="pe-7s-science"></i>
-                        <p>Settings</p>
-                    </a>
-                </li>
-            </ul>
+
+            <?php 
+                if(isset($_SESSION['Role'])) {
+                   $role =  $_SESSION['Role'];
+
+
+                   if($role == 'Administrator'){
+                        echo 
+                        '<ul class="nav">
+                            <li ng-class="{active: $route.current.activetab == "Dashboard"}">
+                                <a data-stateName="Dashboard" href="#/">
+                                    <i class="pe-7s-graph"></i>
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>
+                            <li ng-class="{active: $route.current.activetab == "Call"}">
+                                <a data-stateName="Call" href="#call">
+                                    <i class="pe-7s-call"></i>
+                                    <p>Call</p>
+                                </a>
+                            </li>
+                           <li ng-class="{active: $route.current.activetab == "Services"}">
+                                <a data-stateName="Services" href="#services">
+                                    <i class="pe-7s-user"></i>
+                                    <p>Services</p> 
+                                </a>
+                            </li>
+                            <li ng-class="{active: $route.current.activetab == "Counter"}">
+                                <a data-stateName="Counter" href="#counter">
+                                    <i class="pe-7s-note2"></i>
+                                    <p>Counter</p>
+                                </a>
+                            </li>
+                            <li ng-class="{active: $route.current.activetab == "Users"}">
+                                <a data-stateName="Users" href="#users">
+                                    <i class="pe-7s-news-paper"></i>
+                                    <p>Users</p>
+                                </a>
+                            </li>
+                            <li ng-class="{active: $route.current.activetab == "Settings"}">
+                                <a data-stateName="Settings" href="#settings">
+                                    <i class="pe-7s-science"></i>
+                                    <p>Settings</p>
+                                </a>
+                            </li>
+                        </ul>';
+                    }else{
+                        echo 
+                        '<ul class="nav">
+                            <li ng-class="{active: $route.current.activetab == "Dashboard"}">
+                                <a data-stateName="Dashboard" href="#/">
+                                    <i class="pe-7s-graph"></i>
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>
+                            <li ng-class="{active: $route.current.activetab == "Call"}">
+                                <a data-stateName="Call" href="#call">
+                                    <i class="pe-7s-call"></i>
+                                    <p>Call</p>
+                                </a>
+                            </li>
+                            <li ng-class="{active: $route.current.activetab == "Settings"}">
+                                <a data-stateName="Settings" href="#settings">
+                                    <i class="pe-7s-science"></i>
+                                    <p>Settings</p>
+                                </a>
+                            </li>
+                        </ul>';
+                    }
+                } 
+            ?>
+      
         </div>
     </div>
 

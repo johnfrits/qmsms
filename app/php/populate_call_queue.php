@@ -1,10 +1,25 @@
+
 <?php require_once 'db_connection/connection.php'; ?>
 <?php 
 	
 
 	function populate_table(){
 
-		global $con;
+		global $counterId, $serviceId, $con;
+
+		if(isset($_SESSION['AssignedCounterID'])) {
+         	$counterId = $_SESSION['AssignedCounterID'];
+       	} 
+
+       	$sql = "SELECT *
+       			FROM Counters
+       			WHERE CountersID = '$counterId'";
+
+       	$result = $con->query($sql);
+
+       	while ($row = $result->fetch_assoc()) {
+       		$serviceId = $row['AssignedService'];
+       	}
 
 		$sql = "SELECT Customers.PhoneNumber, 
 					   Services.Name, 
@@ -13,7 +28,8 @@
 					   Queues.CreatedDateTime
 				FROM   Queues, Customers, Services
 				WHERE  Queues.ServiceID = Services.ServiceID
-				AND    Queues.CustomerID = Customers.CustomerID";
+				AND    Queues.CustomerID = Customers.CustomerID
+				AND    Queues.ServiceID = $serviceId";
 
 		$result = $con->query($sql);
 

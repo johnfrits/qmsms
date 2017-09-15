@@ -6,80 +6,128 @@
 
 		$userid = $_GET['usersID'];
 		$callagain = isset($_GET['callagain']) ? true : false;
-		$counterid = $_GET['counterid'];
 		$queueid = '';
 		$serviceid = '';
+		$onqueue = '';
+		$served = '';
 
-		$sql = 'SELECT *
+		if(isset($_GET['counterid'])){
+			$counterid = $_GET['counterid'];
+
+			$sql = 'SELECT *
 				FROM counters
 				WHERE CountersID = '.$counterid.'';
 
-		$result = $con->query($sql);
-		
-		while ($row = $result->fetch_assoc()) {
-			$serviceid = $row['AssignedService'];
+				$result = $con->query($sql);
+				
+				while ($row = $result->fetch_assoc()) {
+					$serviceid = $row['AssignedService'];
+				}
 		}
+
 
 		if($callagain == true){
 			if(isset($_GET['queueid'])){
 				
 				$queueid = $_GET['queueid'];
 
-				$sql = "SELECT * 	
-						FROM queues 
-						WHERE QueueID = '.$queueid.'
-						AND ServiceID = '.$serviceid.'";
+				if($queueid != 0){
 
-				$result = $con->query($sql);
+					$sql = "SELECT * 	
+							FROM queues 
+							WHERE QueueID = '.$queueid.'";
 
-				while ($row = $result->fetch_assoc()) {
-					$queueid = $row['QueueID'];
+					$result = $con->query($sql);
+
+					while ($row = $result->fetch_assoc()) {
+						$queueid = $row['QueueID'];
+					}
+
+					$sql = "INSERT INTO calls (QueueID, CountersID, UsersID) 
+						VALUES ( '$queueid', $counterid, '$userid' ) ";
+
+					if($con->query($sql) == TRUE ){
+						$data['status'] = 'success';
+	 					echo json_encode($data);	
+					}else{
+						$data['status'] = 'error';
+						echo json_encode($data);
+					}	
 				}
-
-				$sql = "INSERT INTO calls (QueueID, CountersID, UsersID) 
-					VALUES ( '$queueid', 2, '$userid' ) ";
-
-				if($con->query($sql) == TRUE ){
-					$data['status'] = 'success';
-					echo json_encode($data);	
-				}else{
+				else{
 					$data['status'] = 'error';
 					echo json_encode($data);
-				}	
+				}
 			}
 		}
+
 		if($callagain == false){
 
 			$sql = 'SELECT * 
+				FROM queues 
+				WHERE CreatedDateTime 
+				= (	SELECT MIN(	CreatedDateTime ) as CreatedDateTime 
 					FROM queues 
-					WHERE CreatedDateTime 
-					= (	SELECT MIN(	CreatedDateTime ) as CreatedDateTime 
-						FROM queues 
-						WHERE Called = 0)';
+					WHERE Called = 0)
+				AND ServiceID = '.$serviceid.'';
 
 			$result = $con->query($sql);
 
 			while ($row = $result->fetch_assoc()) {
 				$queueid = $row['QueueID'];
+				$ticketNumber = $row['TicketNumber'];
 			}
 
-			$sql = "UPDATE queues
-					SET Called = 1   
-					WHERE QueueID = '$queueid'";
+			if($queueid != 0 && $ticketNumber != 0){
 
-			if($con->query($sql) == TRUE){
+				$sql = "UPDATE queues
+						SET Called = 1   
+						WHERE QueueID = '$queueid'";
 
-				$sql = "INSERT INTO calls (QueueID, CountersID, UsersID) 
-					VALUES ( '$queueid', 2, '$userid' ) ";
+				if($con->query($sql) == TRUE){
 
-				if($con->query($sql) == TRUE ){
-					$data['status'] = 'success';
-					$data['queueid'] = $queueid;
-					echo json_encode($data);	
-				}else{
-					$data['status'] = 'error';
-					echo json_encode($data);
+					// get onqueue
+					$sql = 'SELECT *
+					FROM queues
+					WHERE Called = 0
+					AND ServiceID = '.$serviceid.'';
+
+					$result = $con->query($sql);
+					$onqueue = $result->num_rows;
+
+					// get served
+					$sql = 'SELECT *
+						FROM queues
+						WHERE Called = 1
+						AND ServiceID = '.$serviceid.'';
+
+					$result = $con->query($sql);
+					$served = $result->num_rows;
+
+
+					$sql = "INSERT INTO calls (QueueID, CountersID, UsersID) 
+						VALUES ( '$queueid', $counterid , '$userid' ) ";
+		
+					if($con->query($sql) == TRUE ){
+						$data['status'] = 'success';
+						$data['queueid'] = $queueid;
+						$data['onqueue'] = $onqueue;
+						$data['TicketNumber'] = $ticketNumber;
+						$data['served'] = $served;
+						echo json_encode($data);	
+					}else{
+						$data['status'] = 'error';
+						echo json_encode($data);
+					}
 				}
+				//
+			}else{
+				$data['status'] = 'error';
+				$data['queueid'] = 0;
+				$data['onqueue'] = 0;
+				$data['TicketNumber'] = 0;
+				$data['served'] = 0;
+				echo json_encode($data);	
 			}
 		}
 	}
