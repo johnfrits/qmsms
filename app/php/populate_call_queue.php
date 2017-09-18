@@ -21,7 +21,7 @@
        		$serviceId = $row['AssignedService'];
        	}
 
-		$sql = "SELECT Customers.PhoneNumber, 
+		$sql = 'SELECT Customers.PhoneNumber, 
 					   Services.Name, 
 					   Queues.TicketNumber,
 					   Queues.Called,
@@ -29,7 +29,8 @@
 				FROM   Queues, Customers, Services
 				WHERE  Queues.ServiceID = Services.ServiceID
 				AND    Queues.CustomerID = Customers.CustomerID
-				AND    Queues.ServiceID = $serviceId";
+				AND    Queues.ServiceID = '.$serviceId.'
+				AND    Queues.CreatedDateTime > CURRENT_DATE';
 
 		$result = $con->query($sql);
 

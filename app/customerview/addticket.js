@@ -2,6 +2,7 @@ $(document).ready(function() {
 
   var date = new Date();
 
+  //for text
   $('.btn').click(function(){
       var input = $('#myinput');
 
@@ -30,6 +31,7 @@ $(document).ready(function() {
                $('#myModalSuccess').modal("show");
                $('#datetime').text(date);
                $('#ticketNumber').text(data['ticketNumber']);
+               $('#waiting').text(data['waiting']);
                $('#inputNumber').text(input.val());
                $('#myinput').val("");
             } else {
@@ -39,6 +41,7 @@ $(document).ready(function() {
         }
       }
   });
+
 
   function getParameterByName(name, url) {
 

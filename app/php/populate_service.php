@@ -9,7 +9,8 @@
 	
 	while ($row = $result->fetch_assoc()) {
 
-       	echo '<a href="addnumber.php?serviceid='. $row['ServiceID'] .'">
+       	echo 
+       		'<a href="printortext.php?serviceid='. $row['ServiceID'] .'">
                 <div class="col-sm-4">
                     <div class="panel panel-default text-center">
                         <div class="panel-body"> 
@@ -17,7 +18,7 @@
                         </div>
                     </div>
                 </div>
-       	</a>';
+            </a>';
 		
 	}
 	echo '</select>';

@@ -22,8 +22,6 @@
 				$_SESSION['Role'] 	 				= $row['Role'];
 				$_SESSION['Name']   	 			= $row['Name'];
 				$_SESSION['AssignedCounterID']    	= $row['AssignedCounterID'];
-				$data['status'] = 'error';
-				echo json_encode($data);
 				//go to app
 				header('Location: app/');
 			}

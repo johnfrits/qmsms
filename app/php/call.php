@@ -11,7 +11,8 @@
 	FROM calls 
 	WHERE CalledDateTime 
 	= (	SELECT MAX(	CalledDateTime ) as CalledDateTime 
-		FROM calls )';
+		FROM calls
+		WHERE CalledDateTime > CURRENT_DATE )';
 
 	$result = $con->query($sql);
 

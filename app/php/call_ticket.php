@@ -10,6 +10,7 @@
 		$serviceid = '';
 		$onqueue = '';
 		$served = '';
+		$name = '';
 
 		if(isset($_GET['counterid'])){
 			$counterid = $_GET['counterid'];
@@ -22,6 +23,7 @@
 				
 				while ($row = $result->fetch_assoc()) {
 					$serviceid = $row['AssignedService'];
+					$name = $row['Name'];
 				}
 		}
 
@@ -66,10 +68,11 @@
 			$sql = 'SELECT * 
 				FROM queues 
 				WHERE CreatedDateTime 
-				= (	SELECT MIN(	CreatedDateTime ) as CreatedDateTime 
+				= (	SELECT MIN(CreatedDateTime) AS CreatedDateTime 
 					FROM queues 
-					WHERE Called = 0)
-				AND ServiceID = '.$serviceid.'';
+					WHERE Called = 0
+					AND ServiceID = '.$serviceid.' 
+					AND CreatedDateTime > CURRENT_DATE )';
 
 			$result = $con->query($sql);
 
@@ -112,6 +115,7 @@
 						$data['status'] = 'success';
 						$data['queueid'] = $queueid;
 						$data['onqueue'] = $onqueue;
+						$data['name'] = $name;
 						$data['TicketNumber'] = $ticketNumber;
 						$data['served'] = $served;
 						echo json_encode($data);	
@@ -123,10 +127,6 @@
 				//
 			}else{
 				$data['status'] = 'error';
-				$data['queueid'] = 0;
-				$data['onqueue'] = 0;
-				$data['TicketNumber'] = 0;
-				$data['served'] = 0;
 				echo json_encode($data);	
 			}
 		}

@@ -10,13 +10,18 @@ $(document).ready(function() {
         url: '../php/call_ticket.php?usersID=' + userid + '&counterid=' + counterid + '', 
         success: function(response){
           res = JSON.parse(response);
-          queueid = res['queueid'];
-          ticketNumber = res['TicketNumber'];
-          onQueue = res['onqueue'];
-          served = res['served'];    
-          $('#nowserving').html(ticketNumber);
-          $('#servedval').html(served);
-          $('#onqueueval').html(onQueue);
+          if(res['status'] != 'error')
+          {
+              queueid = res['queueid'];
+              ticketNumber = res['TicketNumber'];
+              onQueue = res['onqueue'];
+              served = res['served'];    
+              name = res['name'];
+              $('#nowserving').html(ticketNumber);
+              $('#servedval').html(served);
+              $('#onqueueval').html(onQueue);
+              $('#name').html(name);
+          }
         }
      }); 
   });

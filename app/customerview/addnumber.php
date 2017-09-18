@@ -118,7 +118,14 @@
                         <h4 class="modal-title">Thank you for using <b>QMSMS !<b></h4>
                     </div>
                     <div class="modal-body">
-                        <p>Your ticket number <b id="ticketNumber"></b> has been sent to your mobile number (<b id="inputNumber"></b>).</p>
+                        <p>Your ticket number 
+                            <b id="ticketNumber"></b> 
+                            has been sent to your mobile number 
+                            (<b id="inputNumber"></b>)
+                            Total customer(s) waiting 
+                            <b id="waiting"></b>.
+                        </p>
+                        
                         <p id="datetime"></p>
                     </div>
                     <div class="modal-footer">

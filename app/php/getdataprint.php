@@ -1,10 +1,10 @@
 <?php require_once 'db_connection/connection.php'; ?>
-<?php include 'text_ticket.php' ?>
 <?php 
 
- 	$customerInput = $_GET['customerInput'];
+ 	$customerInput = 'printed';
  	$serviceId = $_GET['serviceid'];
 	$ticketNumber = "";
+	$waiting = "";
 	$data = array();
 
  	$sql = "SELECT *
@@ -53,19 +53,21 @@
 	if($con->query($sql) == TRUE ){
 		
 		$customerId = $con->insert_id;
-
+		
 		$sql = "SELECT *
 		FROM   queues  
 		WHERE  Called  = 0
 		AND ServiceID ='.$serviceId.'";
+
 		$result = $con->query($sql);
+
 		$waiting = $result->num_rows;
 		$data['waiting'] = $waiting;
 
-	   	$sql = "INSERT INTO queues (ServiceID, CustomerID, TicketNumber) 
+	   	$sql = "INSERT INTO queues (serviceId, CustomerID, TicketNumber) 
 		  		VALUES ('$serviceId', '$customerId' ,'$ticketNumber')";
 
-		if(textTicket($customerInput, $ticketNumber, $waiting) && $con->query($sql) == TRUE){
+		if($con->query($sql) == TRUE){
 
 			$data['status'] = 'success';
 			echo json_encode($data);	
