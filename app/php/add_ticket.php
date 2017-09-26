@@ -57,7 +57,7 @@
 		$sql = "SELECT *
 		FROM   queues  
 		WHERE  Called  = 0
-		AND ServiceID ='.$serviceId.'";
+		AND ServiceID = $serviceId";
 		$result = $con->query($sql);
 		$waiting = $result->num_rows;
 		$data['waiting'] = $waiting;
