@@ -143,12 +143,7 @@
                                     <p>Call</p>
                                 </a>
                             </li>
-                            <li ng-class="{active: $route.current.activetab == Settings}">
-                                <a data-stateName="Settings" href="#settings">
-                                    <i class="pe-7s-science"></i>
-                                    <p>Settings</p>
-                                </a>
-                            </li>
+                    
                         </ul>';
                     }
                 } 
