@@ -49,4 +49,36 @@
 
 		}
 	}
+
+	function populate_admin_table(){
+
+
+
+		$sql = 'SELECT Customers.PhoneNumber, 
+					   Services.Name, 
+					   Queues.TicketNumber,
+					   Queues.Called,
+					   Queues.CreatedDateTime
+				FROM   Queues, Customers, Services
+				WHERE  Queues.ServiceID = Services.ServiceID
+				AND    Queues.CustomerID = Customers.CustomerID
+				AND    Queues.CreatedDateTime > CURRENT_DATE';
+
+		$result = $con->query($sql);
+
+		
+		while ($row = $result->fetch_assoc()) {
+			
+			echo '<tbody>
+	            <tr>
+	                <td>'. $row['Name'] .'</td>
+	                <td>'. $row['PhoneNumber'] .'</td>
+	                <td>'. $row['TicketNumber'] .'</td>
+	                <td>'. ($row['Called'] == 1 ? 'Called' : 'Not Called') .'</td>
+	                <td>'. $row['CreatedDateTime'] .'</td>
+	            </tr>
+	        </tbody>';
+
+		}
+	}
 ?>

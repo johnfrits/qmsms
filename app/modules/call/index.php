@@ -27,7 +27,16 @@
                                         <th>Status</th>
                                         <th>Queued Date</th>
                                     </thead>
-                                        <?php populate_table();?>
+                                        <?php
+                                            if(isset($_SESSION['userID'])) {
+                                                $userID = $_SESSION['userID'];
+
+                                                if($userID != 0)
+                                                    populate_table();
+                                                else
+                                                    populate_admin_table();
+                                            } 
+                                         ?>
                                 </table>
 
                             </div>

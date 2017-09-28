@@ -11,7 +11,7 @@
                                   <a href="modules/users/adduser.php" target="_blank" type="button" class="btn btn-info">
                                   <span class="fa fa-plus" aria-hidden="true"></span>
                                 </a>
-                               <h2>Counters</h2>
+                               <h2>Users</h2>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
@@ -22,7 +22,16 @@
                                         <th>Role</th>
                                         <th>AssignedCounterId</th>
                                     </thead>
-                                        <?php populate_table();?>
+                                        <?php 
+                                        if(isset($_SESSION['userID'])) {
+                                            $counterId = $_SESSION['userID'];
+                                            if($counterId != 0){
+                                                populate_table();
+                                            }else{
+                                                populate_admin_table();
+                                            }
+                                        } 
+                                        ?>
                                 </table>
 
                             </div>
