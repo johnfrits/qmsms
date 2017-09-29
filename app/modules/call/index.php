@@ -31,7 +31,7 @@
                                             if(isset($_SESSION['userID'])) {
                                                 $userID = $_SESSION['userID'];
 
-                                                if($userID != 0)
+                                                if($userID != 1)
                                                     populate_table();
                                                 else
                                                     populate_admin_table();

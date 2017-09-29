@@ -52,7 +52,7 @@
 
 	function populate_admin_table(){
 
-
+		global $con;
 
 		$sql = 'SELECT Customers.PhoneNumber, 
 					   Services.Name, 
