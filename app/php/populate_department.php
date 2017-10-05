@@ -1,12 +1,8 @@
 <?php require_once 'db_connection/connection.php'; ?>
 <?php 
-  
-
-  $departmentid = $_GET['departmentid'];
 
 	$sql = "SELECT *
-			FROM services
-      WHERE departmentId = $departmentid";
+			FROM department";
 
 	$result = $con->query($sql);
 
@@ -14,11 +10,11 @@
 	while ($row = $result->fetch_assoc()) {
 
        	echo 
-       		'<a href="printortext.php?serviceid='. $row['ServiceID'] .'">
+       		'<a href="services.php?departmentid='. $row['departmentId'] .'">
                 <div class="col-sm-4">
                     <div class="panel panel-default text-center">
                         <div class="panel-body"> 
-                          '. $row['Name']  .'
+                          '. $row['name']  .'
                         </div>
                     </div>
                 </div>

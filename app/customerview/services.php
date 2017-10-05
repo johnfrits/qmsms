@@ -32,7 +32,7 @@
     <!--  Notifications Plugin    -->
     <script src="../assets/js/bootstrap-notify.js"></script>
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
- <!--  //  <script src="addticket.js"></script> -->
+
     <style type="text/css">
         .content{
             margin-top: 2%;
@@ -44,17 +44,7 @@
             height: 200px;
             border-radius: 20px;
         }
-        input{
-            background-color: #D94A4F;
-            font-size: 45px;
-            height: 200px;
-            border-radius: 20px;
-            color: white;
-        }
         a{
-            color: white;
-        }
-        a:hover{
             color: white;
         }
     </style>
@@ -71,79 +61,20 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a style="font-weight: bold;"  class="navbar-brand" id="title-brand">Do you want to avail to our sms notification service?</a>
+                    <a style="font-weight: bold;"  class="navbar-brand" id="title-brand">Please choose a service.</a>
                 </div>
             </div>
         </nav>
-
+       
         <div class="content">
-            <?php 
-                if(isset($_GET['serviceid'])){
-                    echo 
-                    '<a href="addnumber.php?serviceid='. $_GET['serviceid'] .'">
-                        <div class="col-sm-4">
-                            <div class="panel panel-default text-center">
-                                <div class="panel-body"> 
-                                  Yes
-                                </div>
-                            </div>
-                        </div>
-                    </a>';
-                }
-                  // href="../php/getdataprint.php?serviceid='. $_GET['serviceid'] .'
-            ?>
-            <input class="col-sm-4" type="button" value="No" onclick="PrintDiv();" />
+           <?php 
+
+            $departmentid = $_GET['departmentid'];
+
+            include "../php/populate_service.php";
+
+             ?>
         </div>
-
-
-        <div id="divToPrint" style="display:none;" >
-            <div style="text-align: center">
-                <h1>QMSMS | DAVAO CITY</h1>
-                <h2>Ticket Number</h2>
-                <h1 id="ticketNumber"></h1>
-                <h3>Total customer(s) waiting</h3>
-                <h3 id="waiting"></h3>
-                <h5 id="datetime"></h5>            
-            </div>
-        </div>
-
 </div>
 </body>
 </html>
-
-
-<script type="text/javascript">
-    function PrintDiv() {    
-        var date = new Date();
-        var url = null;
-        var serviceid = getParameterByName('serviceid');
-
-        url = '../php/getdataprint.php?serviceid='+ serviceid +''; 
-         
-        $.post(url,$(this).serialize(),function(data) {
-            if ( data['status']  == 'success') {
-                $('#datetime').text(date);
-                $('#ticketNumber').text(data['ticketNumber']);
-                $('#waiting').text(data['waiting']);
-                var divToPrint = document.getElementById('divToPrint');
-                var popupWin = window.open('', '_blank', 'width=900,height=900');
-                popupWin.document.open();
-                popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
-                popupWin.document.close();
-                window.location.replace('../customerview/');
-
-            }
-        },'JSON');
-    }
-
-    function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "))
-    }
-
-</script>

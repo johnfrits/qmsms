@@ -31,7 +31,7 @@
     <script src="../assets/js/chartist.min.js"></script>
     <!--  Notifications Plugin    -->
     <script src="../assets/js/bootstrap-notify.js"></script>
-    <script src="addticket.js"></script>
+  <!--   <script src="addticket.js"></script> -->
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <style type="text/css">
         body  {
@@ -109,48 +109,6 @@
         </nav>
 
         <div class="content">
-            <div class="modal fade" role="dialog" id="myModalSuccess">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                    <div class="modal-header modal-header-success">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h4 class="modal-title">Thank you for using <b>QMSMS !<b></h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Your ticket number 
-                            <b id="ticketNumber"></b> 
-                            has been sent to your mobile number 
-                            (<b id="inputNumber"></b>)
-                            Total customer(s) waiting 
-                            <b id="waiting"></b>.
-                        </p>
-                        
-                        <p id="datetime"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="../customerview" type="button" class="btn btn-default">Close</a>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" role="dialog" id="myModalError">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                    <div class="modal-header modal-header-danger">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h3 class="modal-title"><b>Please try again...<b></3>
-                    </div>
-                    <div class="modal-body">
-                        <p>Something is wrong with your number kindly check it again.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                    </div>
-                    </div>
-                </div>
-            </div>
             <form method="POST" id="addticket">
                 <div class="form-group">
                     <label for="inputlg">Please input your mobile number and press ENTER key.</label>
@@ -177,8 +135,86 @@
                     <button type="button" class="btn btn-danger col-sm-4" value="Enter"><h2>Enter</h2></button>
                 </div>
             </form>
-       
-        </div>  
+        </div>
+
+    <div id="divToPrint" style="display:none;" >
+    <div style="text-align: center">
+        <h1>QMSMS | DAVAO CITY</h1>
+        <h2>Ticket Number</h2>
+        <h1 id="ticketNumber"></h1>
+        <h3>Total customer(s) waiting</h3>
+        <h3 id="waiting"></h3>
+        <h5 id="datetime"></h5>            
+    </div>
 </div>
+
+</div>
+
+
+
 </body>
 </html>
+
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+  var date = new Date();
+
+  //for text
+  $('.btn').click(function(){
+      var input = $('#myinput');
+
+      if(input.val().length < 11 && $(this).val() != 'Clear' && $(this).val() != 'Enter' ){
+       
+          $('#myinput').val($('#myinput').val()+$(this).val());
+      }   
+
+      if($(this).val() == 'Clear'){
+          $('#myinput').val("");
+      }
+
+      if($(this).val() == 'Enter'){
+
+        if( input.val().length == 0 || input.val().length < 11 ){
+          $('#myModalError').modal("show");
+        }
+        else{  
+          var url = null;
+          var serviceid = getParameterByName('serviceid');
+
+          url = '../php/add_ticket.php?serviceid='+ serviceid +'&customerInput='+ input.val() +''; 
+         
+          $.post(url,$(this).serialize(),function(data) {
+            if ( data['status']  == 'success') {
+                $("#datetime").text(date);
+                $("#ticketNumber").text(data["ticketNumber"]);
+                $("#waiting").text(data["waiting"]);
+                var divToPrint = document.getElementById('divToPrint');
+                var popupWin = window.open('', '_blank', 'width=900,height=900');
+                popupWin.document.open();
+                popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+                popupWin.document.close();
+                window.location.replace('../customerview/');
+            }
+          },'JSON');
+        }
+      }
+  });
+
+
+  function getParameterByName(name, url) {
+
+    if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+    
+  }
+
+});
+</script>

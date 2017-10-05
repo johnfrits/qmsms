@@ -26,7 +26,7 @@
     <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="../assets/js/bootstrap-notify.js"></script>
     <script src='voice.js'></script>
-    <script src='Queue.js'></script>
+    <script src='blink.js'></script>
     <!-- Custom JS -->
     <style type="text/css">
       html, body, .wrapper{
@@ -34,10 +34,12 @@
         overflow: auto;
       }
       h1 {
-        font-size: 13vw;
+        text-align: center;
+        font-size: 3vw;
       }
       h2 {
-        font-size: 7vw;
+        font-size: 5vw;
+        font-weight: bolder;
       }
       h3 {
         font-size: 6vw;
@@ -53,63 +55,32 @@
 </head>
 <body>
   <div class="wrapper">
-        <div class="container-fluid" style="padding-top: 10px; background-color: #fd6b68">
-         <div class="navbar-header">
+    <div class="container-fluid" style="padding-top: 10px; background-color: #fd6b68">
+         <div class="navbar-header pull-right">
              <h5>QMSMS | DAVAO CITY HALL<h5>
+         </div>
+         <div class="navbar-header ">
+             <h5>NOW SERVING !!!<h5>
          </div>
     </div>
     <div class="content">
-      <table class="table table-bordered text-center"> 
-      <tr>
-        <td class="col-xs-4 active" >
-          <div class="panel panel-primary">
-            <div class="panel-body" >
-              <h2 style="color: #FD4440;" id="hcolumn1"><b>NULL</b></h2>
-              <h4 id="tcolumn1">NULL</h4>
-            </div>
-          </div>
-        </td>
-        <td  rowspan="3" class="col-xs-6 active">
-          <div class="panel panel-default">
-            <div class="panel-body" style="height: 100%;">
-              <h2><b>TICKET NUMBER</b></h2>
-              <h1 style="color: #FD4440;" id="mainTicketNumber"><b>NULL</b></h1>
-              <h3>Please proceed to</h3>
-              <h3 id="mainCounterNumber"><b>NULL</b></h3>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="col-xs-4 active">
-          <div class="panel panel-default">
-           <div class="panel-body">
-            <h2 style="color: #FD4440;" id="hcolumn2"><b>NULL</b></h2>
-            <h4 id="tcolumn2">NULL</h4>
-           </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="col-xs-4 active">
-          <div class="panel panel-default">
-          <div  class="panel-body">
-            <h2 style="color: #FD4440;" id="hcolumn3"><b>NULL</b></h2>
-            <h4  id="tcolumn3">NULL</h4>
-          </div>
-          </div>
-        </td>
-      </tr>
+      <table id="tbl" class="table table-bordered text-center"> 
+        <th>
+          <h1>COUNTER #</h1> 
+        </th>
+        <th>
+          <h1>SERVICE</h1>
+        </th>
+        <th>
+          <h1>TICKET NUMBER</h1>
+        </th> 
+             <?php include 'populate_counter.php';?>
       </table>
     </div>
   </div>
 </body>
 </html>
 <script type="text/javascript">
-
-  var queueTicketNumber = [];
-  var queueCounterNumber = [];
-  var temp;
 
   function checkcall() {
 
@@ -119,31 +90,34 @@
         cache: false,
         success: function(response) {
           res = JSON.parse(response);
-          if (curr!= res["CallID"]) {
-
+          if (curr != res["CallID"]) {
               curr = res["CallID"];
-              callID = res["CallID"];
+              counterName = res["CounterName"].trim();
               ticketNumber = res["TicketNumber"];
-              countersID = res["CountersID"];
+              serviceName = res["ServiceName"];
+              counterName = counterName.replace(/\s/g, '');
+             // get id
+              var incrementer = 0;
 
-              if(queueTicketNumber[queueTicketNumber.length - 1] != ticketNumber){
-                 queueTicketNumber.push(ticketNumber);
-                 queueCounterNumber.push(countersID);
-              }
+              $('#tbl h2').each(function() { 
 
-              //for ticket number
-              $('#mainTicketNumber').html(queueTicketNumber[queueTicketNumber.length -1]);
-              $('#hcolumn1').html(queueTicketNumber[queueTicketNumber.length - 2]);
-              $('#hcolumn2').html(queueTicketNumber[queueTicketNumber.length - 3]);
-              $('#hcolumn3').html(queueTicketNumber[queueTicketNumber.length - 4]);
-              //for counter number
-              $('#mainCounterNumber').html('Counter ' + queueCounterNumber[queueCounterNumber.length - 1]);
-              $('#tcolumn1').html((typeof queueCounterNumber[queueCounterNumber.length - 2] === 'undefined' ? 'NULL' : 'Counter ' + queueCounterNumber[queueCounterNumber.length - 2]) );
-              $('#tcolumn2').html((typeof queueCounterNumber[queueCounterNumber.length - 3] === 'undefined' ? 'NULL' : 'Counter ' + queueCounterNumber[queueCounterNumber.length - 3]) );
-              $('#tcolumn3').html((typeof queueCounterNumber[queueCounterNumber.length - 4] === 'undefined' ? 'NULL' : 'Counter ' + queueCounterNumber[queueCounterNumber.length - 4]) );
-            
-              messageVoice = ('TicketNumber' + ticketNumber + ' Please proceed to ' + ' Counter ' + countersID);
-              responsiveVoice.speak(messageVoice);
+                if(this.id.indexOf('Counter') > -1){
+
+                  ++incrementer;
+
+                    if( this.id == counterName){
+                      $("#Prionumber" + incrementer).html(ticketNumber);
+                      $("#Service" + incrementer).html(serviceName);
+                      messageVoice = ('TicketNumber' + ticketNumber + ' Please proceed to '+ counterName);
+                      responsiveVoice.speak(messageVoice);
+                      
+                      //  $("#Prionumber" + incrementer).blink({delay: 300});  
+                      // setTimeout(function(){
+                      //  $("#Prionumber" + incrementer).unblink();
+                      // }, 3000);
+                  }
+                }
+            });
           }
         }
     });
@@ -161,15 +135,35 @@
           success: function(response) {
               res = JSON.parse(response);
               curr = res["CallID"];
-              callID = res["CallID"];
-              // ticketNumber = res["TicketNumber"];
-              // countersID = res["CountersID"];
-              // $('#mainTicketNumber').html(ticketNumber);
-              // $('#mainCounterNumber').html('Counter '+countersID);
-              // messageVoice = ('TicketNumber' + ticketNumber + ' Please proceed to ' + ' Counter ' + countersID);
-              // responsiveVoice.speak(messageVoice);
+              counterName = res["CounterName"].trim();
+              ticketNumber = res["TicketNumber"];
+              serviceName = res["ServiceName"];
+              counterName = counterName.replace(/\s/g, '');
+             // get id
+              var incrementer = 0;
+              $('#tbl h2').each(function() {
+
+                if(this.id.indexOf('Counter') > -1){
+
+                  ++incrementer;
+                  if( this.id == counterName){
+                      $("#Prionumber" + incrementer).html(ticketNumber);
+                      $("#Service" + incrementer).html(serviceName);
+                      messageVoice = ('TicketNumber' + ticketNumber + ' Please proceed to '+ counterName);
+                      responsiveVoice.speak(messageVoice);
+
+
+                      //  $("#Prionumber" + incrementer).blink({delay: 300});  
+                      // setTimeout(function(){
+                      //  $("#Prionumber" + incrementer).unblink();
+                      // }, 3000);
+                  }
+                }
+            });
           }
       });
+
+
       checkcall();
   });
 </script>

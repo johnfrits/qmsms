@@ -61,13 +61,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a style="font-weight: bold;"  class="navbar-brand" id="title-brand">Please choose a service.</a>
+                    <a style="font-weight: bold;"  class="navbar-brand" id="title-brand">Please choose a department.</a>
                 </div>
             </div>
         </nav>
        
         <div class="content">
-           <?php include '../php/populate_service.php'; ?>
+           <?php include '../php/populate_department.php'; ?>
         </div>
 </div>
 </body>
