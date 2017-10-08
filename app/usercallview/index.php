@@ -10,6 +10,7 @@
 	    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
 	    <script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 	    <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+	    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 		<script src="usercall.js" type="text/javascript"></script>
 		<style type="text/css">
 			.wrapper{
@@ -24,7 +25,7 @@
 
 			}
 			#buttons{
-				padding-left: 40px;
+				padding-left: 30px;
 			}
 			#onqueue{
 				color: blue;
@@ -71,10 +72,14 @@
 		     	<div id="content">
 			     	<h1  class="text-center">NOW SERVING</h1>
 			    	<h1 id="nowserving" class="text-center blinker">0</h1>
+			    	<h3 id="times" class="text-center">3 TIME(S)</h3>
 		     	</div>
 		    	<div id="buttons">
-			    	<a id="callnext" class="btn btn-primary btn-lg">CALL NEXT</a>
-			     	<a id="callagain" class="btn btn-primary btn-lg">CALL AGAIN</a>
+		    		<a style="width: 180px;" id="callagain" class="btn btn-primary btn-lg">
+		    		 <i class="fa fa-phone fa-2x pull-left"></i>CALL <br> AGAIN </a>
+			    	<a style="width: 180px;" id="callnext" class="btn btn-primary btn-lg">
+			    	  <i class="fa fa-forward fa-2x pull-left"></i> CALL <br> NEXT</a>
+
 		    	</div>
 
 		    </form>

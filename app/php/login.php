@@ -1,6 +1,5 @@
 <?php require_once 'app/php/db_connection/connection.php'; ?>
 <?php
-    session_start();
 
 	if(isset($_POST['username']) && isset($_POST['password'])){
 
@@ -22,6 +21,7 @@
 				$_SESSION['Role'] 	 				= $row['Role'];
 				$_SESSION['Name']   	 			= $row['Name'];
 				$_SESSION['AssignedCounterID']    	= $row['AssignedCounterID'];
+				$_SESSION['loggedin']    			= true;
 				//go to app
 				header('Location: app/');
 			}

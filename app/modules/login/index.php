@@ -1,3 +1,24 @@
+<?php
+
+    $status = session_status();
+    if($status == PHP_SESSION_NONE){
+        session_start();
+    }
+    if($status == PHP_SESSION_ACTIVE){
+        //Destroy current and start new one
+        session_destroy();
+        session_start();
+    }
+
+    if(isset($_SESSION['loggedin'])){
+
+        if($_SESSION['loggedin']){
+          header('Location: app/');
+        }
+
+    }
+?>
+
 <?php include 'app/php/login.php' ?>
 <!doctype html>
 <html lang="en">

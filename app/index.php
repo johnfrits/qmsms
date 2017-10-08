@@ -1,4 +1,13 @@
+<?php ob_start();?>
 <?php session_start();?>
+
+<?php 
+  if(!$_SESSION['loggedin']){
+      header("Location: HTTP/1.1 404 File Not Found", 404);
+      exit;
+  }
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -46,6 +55,7 @@
     <script src="modules/settings/settings.js "></script>
     <script src="scripts/screenfull.js "></script>  
     <script src="modules/services/services.js "></script>
+    <script src="modules/department/department.js "></script>
     <script type="text/javascript">
 
         $(document).ready(function() {
@@ -102,6 +112,12 @@
                                     <p>Call</p>
                                 </a>
                             </li>
+                            <li ng-class="{active: $route.current.activetab == Department}">
+                                <a data-stateName="Department" href="#department">
+                                    <i class="pe-7s-keypad"></i>
+                                    <p>Department</p>
+                                </a>
+                            </li>
                            <li ng-class="{active: $route.current.activetab == Services}">
                                 <a data-stateName="Services" href="#services">
                                     <i class="pe-7s-user"></i>
@@ -120,7 +136,6 @@
                                     <p>Users</p>
                                 </a>
                             </li>
-                           
                         </ul>';
                          // <li ng-class="{active: $route.current.activetab == "Settings"}">
                          //        <a data-stateName="Settings" href="#settings">
@@ -166,16 +181,25 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                                 <i class="fa fa-external-link"></i>
-                            <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="customerview/" target="_blank">Display Users View</a></li>
-                                <li><a href="queueingview/" target="_blank"">Display Queue View</a></li>
-                            </ul>
-                        </li>
+                        <?php 
+                            if(isset($_SESSION['Role'])) {
+                                $role =  $_SESSION['Role'];
+                                if($role == 'Administrator'){
+                                    echo'
+                                    <li class="dropdown">
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                         <i class="fa fa-external-link"></i>
+                                    <b class="caret"></b>
+                                    </a>       
+                                    <ul class="dropdown-menu">
+                                    <li><a href="customerview/" target="_blank">Display Users View</a></li>
+                                    <li><a href="queueingview/" target="_blank"">Display Queue View</a></li>
+                                    </ul>
+                                    </li>
+                                    ';
+                                }
+                            }
+                        ?>   
                         <li class="fullscreen">
                            <a href="">
                                 <i class="fa fa-window-maximize"></i>

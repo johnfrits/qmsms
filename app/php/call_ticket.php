@@ -6,11 +6,13 @@
 
 		$userid = $_GET['usersID'];
 		$callagain = isset($_GET['callagain']) ? true : false;
+		$missed = isset($_GET['callagain']) ? 1 : 0;
 		$queueid = '';
 		$serviceid = '';
 		$onqueue = '';
 		$served = '';
 		$name = '';
+
 
 		if(isset($_GET['counterid'])){
 			$counterid = $_GET['counterid'];

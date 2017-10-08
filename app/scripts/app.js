@@ -4,7 +4,7 @@
 
    angular
 
-    .module( 'myApp', ['ngRoute', 'dashboardModule', 'callModule', 'servicesModule', 'appModule', 'counterModule', 'usersModule', 'settingsModule' ] )
+    .module( 'myApp', ['ngRoute', 'dashboardModule', 'callModule', 'servicesModule', 'appModule', 'departmentModule', 'counterModule', 'usersModule', 'settingsModule' ] )
 
     .run([
       '$rootScope', '$location',
@@ -40,6 +40,10 @@
        .when("/settings", {
         templateUrl : "modules/settings/index.php",
         activetab: 'Settings'
+      })   
+        .when("/department", {
+        templateUrl : "modules/department/index.php",
+        activetab: 'Department'
       })   
     }]) 
 

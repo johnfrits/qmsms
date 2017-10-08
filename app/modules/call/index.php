@@ -12,6 +12,7 @@
                                     if(isset($_SESSION['userID'])) {
                                         echo '<a href="usercallview?userid='.$_SESSION['userID']. '&counterid='.$_SESSION['AssignedCounterID'] .'" target="_blank"   type="button" class="btn btn-info">
                                               <span class="fa fa-phone" aria-hidden="true"></span>
+                                              Open Call Window
                                               </a>';
                                       } 
                                 ?>

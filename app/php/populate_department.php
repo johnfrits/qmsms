@@ -2,7 +2,8 @@
 <?php 
 
 	$sql = "SELECT *
-			FROM department";
+			FROM department
+      WHERE status = 'Active'";
 
 	$result = $con->query($sql);
 
