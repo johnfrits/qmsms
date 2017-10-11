@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2017 at 10:52 PM
+-- Generation Time: Oct 11, 2017 at 11:12 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -165,7 +165,20 @@ INSERT INTO `calls` (`CallID`, `QueueID`, `CountersID`, `UsersID`, `CalledDateTi
 (312, 245, 6, 1, '2017-10-09 04:34:58'),
 (313, 245, 6, 1, '2017-10-09 04:35:03'),
 (314, 245, 6, 1, '2017-10-09 04:35:10'),
-(315, 245, 6, 1, '2017-10-09 04:35:15');
+(315, 245, 6, 1, '2017-10-09 04:35:15'),
+(316, 246, 6, 1, '2017-10-09 16:53:43'),
+(317, 247, 6, 1, '2017-10-10 04:26:33'),
+(318, 247, 6, 1, '2017-10-10 04:26:34'),
+(319, 247, 6, 1, '2017-10-10 04:26:35'),
+(320, 247, 6, 1, '2017-10-10 04:26:36'),
+(321, 247, 6, 1, '2017-10-10 04:26:36'),
+(322, 256, 6, 1, '2017-10-11 02:42:01'),
+(323, 249, 6, 1, '2017-10-11 03:46:08'),
+(324, 249, 6, 1, '2017-10-11 03:47:39'),
+(325, 249, 6, 1, '2017-10-11 03:47:40'),
+(326, 249, 6, 1, '2017-10-11 03:47:41'),
+(327, 249, 6, 1, '2017-10-11 03:47:42'),
+(328, 250, 6, 1, '2017-10-11 03:47:42');
 
 -- --------------------------------------------------------
 
@@ -185,7 +198,7 @@ CREATE TABLE `counters` (
 
 INSERT INTO `counters` (`CountersID`, `Name`, `AssignedService`) VALUES
 (5, 'Counter 1', 10),
-(6, 'Counter 2', 11);
+(6, 'Counter 2', 14);
 
 -- --------------------------------------------------------
 
@@ -288,7 +301,33 @@ INSERT INTO `customers` (`CustomerID`, `PhoneNumber`) VALUES
 (239, 'printed'),
 (240, 'printed'),
 (241, 'printed'),
-(242, 'printed');
+(242, 'printed'),
+(243, 'printed'),
+(244, 'printed'),
+(245, 'printed'),
+(246, 'printed'),
+(247, 'printed'),
+(248, 'printed'),
+(249, 'printed'),
+(250, 'printed'),
+(251, 'printed'),
+(252, 'printed'),
+(253, 'printed'),
+(254, 'printed'),
+(255, 'printed'),
+(256, 'printed'),
+(257, 'printed'),
+(258, '09179545286'),
+(259, '09179545286'),
+(260, '09179545286'),
+(261, '09179545286'),
+(262, '09179545286'),
+(263, '09179545286'),
+(264, '09179545286'),
+(265, '09179545286'),
+(266, '09179545286'),
+(267, '09179545286'),
+(268, 'printed');
 
 -- --------------------------------------------------------
 
@@ -308,7 +347,7 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`departmentId`, `name`, `datecreated`, `status`) VALUES
-(1, 'Finance', '2017-10-04 13:37:12', 'Active'),
+(1, 'Finance', '2017-10-04 13:37:12', 'Not Active'),
 (2, 'Management', '2017-10-06 01:20:54', 'Active'),
 (3, 'Properties', '2017-10-08 18:12:47', 'Active'),
 (4, 'Test', '2017-10-08 18:51:52', 'Active'),
@@ -375,7 +414,33 @@ INSERT INTO `queues` (`QueueID`, `ServiceID`, `CustomerID`, `TicketNumber`, `Cal
 (242, 11, 239, 2027, 1, 1, '2017-10-09 04:23:54'),
 (243, 11, 240, 2028, 1, 1, '2017-10-09 04:32:37'),
 (244, 11, 241, 2029, 1, 0, '2017-10-09 04:32:41'),
-(245, 11, 242, 2030, 1, 1, '2017-10-09 04:33:44');
+(245, 11, 242, 2030, 1, 1, '2017-10-09 04:33:44'),
+(246, 11, 243, 2031, 1, 0, '2017-10-09 16:53:34'),
+(247, 11, 244, 2032, 1, 1, '2017-10-10 04:24:17'),
+(248, 11, 245, 2033, 0, 0, '2017-10-10 04:37:48'),
+(249, 14, 246, 5001, 1, 1, '2017-10-11 00:51:05'),
+(250, 14, 247, 5002, 1, 0, '2017-10-11 01:29:47'),
+(251, 14, 248, 5003, 0, 0, '2017-10-11 01:52:52'),
+(252, 14, 249, 5004, 0, 0, '2017-10-11 01:54:12'),
+(253, 14, 250, 5005, 0, 0, '2017-10-11 01:54:35'),
+(254, 14, 251, 5006, 0, 0, '2017-10-11 01:58:05'),
+(255, 14, 252, 5007, 0, 0, '2017-10-11 02:31:39'),
+(256, 11, 253, 2034, 1, 0, '2017-10-11 02:31:50'),
+(257, 14, 254, 5008, 0, 0, '2017-10-11 02:32:44'),
+(258, 14, 255, 5009, 0, 0, '2017-10-11 02:34:04'),
+(259, 15, 256, 6001, 0, 0, '2017-10-11 02:34:54'),
+(260, 15, 257, 6002, 0, 0, '2017-10-11 02:38:45'),
+(261, 14, 258, 5010, 0, 0, '2017-10-11 03:12:05'),
+(262, 14, 259, 5011, 0, 0, '2017-10-11 03:30:42'),
+(263, 14, 260, 5012, 0, 0, '2017-10-11 03:31:00'),
+(264, 14, 261, 5013, 0, 0, '2017-10-11 03:36:53'),
+(265, 14, 262, 5014, 0, 0, '2017-10-11 03:39:23'),
+(266, 14, 263, 5015, 0, 0, '2017-10-11 03:40:45'),
+(267, 14, 264, 5016, 0, 0, '2017-10-11 03:41:29'),
+(268, 14, 265, 5017, 0, 0, '2017-10-11 03:41:49'),
+(269, 14, 266, 5018, 0, 0, '2017-10-11 03:43:16'),
+(270, 14, 267, 5019, 0, 0, '2017-10-11 03:43:39'),
+(271, 15, 268, 6003, 0, 0, '2017-10-11 04:02:44');
 
 -- --------------------------------------------------------
 
@@ -387,16 +452,21 @@ CREATE TABLE `services` (
   `ServiceID` int(11) NOT NULL,
   `departmentId` int(11) NOT NULL,
   `Name` varchar(100) NOT NULL,
-  `DefaultNumber` int(11) NOT NULL
+  `DefaultNumber` int(11) NOT NULL,
+  `status` varchar(11) NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `services`
 --
 
-INSERT INTO `services` (`ServiceID`, `departmentId`, `Name`, `DefaultNumber`) VALUES
-(10, 1, 'PaYMeNt', 1000),
-(11, 2, 'TrY', 2000);
+INSERT INTO `services` (`ServiceID`, `departmentId`, `Name`, `DefaultNumber`, `status`) VALUES
+(10, 2, 'Payment', 1000, 'Not Active'),
+(11, 2, 'TrY', 2000, 'Active'),
+(12, 1, 'Fin123', 3000, 'Active'),
+(13, 1, 'Finance123434', 4000, 'Active'),
+(14, 7, 'Testasd', 5000, 'Active'),
+(15, 3, 'Fast', 6000, 'Active');
 
 -- --------------------------------------------------------
 
@@ -475,7 +545,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `calls`
 --
 ALTER TABLE `calls`
-  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=316;
+  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=329;
 --
 -- AUTO_INCREMENT for table `counters`
 --
@@ -485,7 +555,7 @@ ALTER TABLE `counters`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
+  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
 --
 -- AUTO_INCREMENT for table `department`
 --
@@ -495,12 +565,12 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `queues`
 --
 ALTER TABLE `queues`
-  MODIFY `QueueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
+  MODIFY `QueueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=272;
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `ServiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ServiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `users`
 --
