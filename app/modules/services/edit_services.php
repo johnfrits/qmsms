@@ -1,6 +1,6 @@
 <?php ob_start();?>
 <?php session_start();?>
-
+<?php include 'getPreviewData.php'; ?>
 <?php 
   if(!$_SESSION['loggedin']){
       header("Location: HTTP/1.1 404 File Not Found", 404);
@@ -40,7 +40,7 @@
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <!-- Custom JS -->
-    <script src="add_department.js"></script>
+    <script src="edit_services.js"></script>
     <style type="text/css">
         body{
           background-color: #fd6b68;
@@ -79,18 +79,32 @@
               </div>
             </div>
           </nav>
-          <legend>ADD DEPARTMENT</legend>
+          <legend>EDIT SERVICES</legend>
           <fieldset>
             <div class="form-group">
               <label for="inputPassword" class="col-sm-2 control-label" >Name</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="inputName" placeholder="Name">
               </div>
-
+            </div>
+            <div class="form-group">
+              <label for="select" class="col-lg-2 control-label">Department</label>
+              <div class="col-lg-8">
+                <select class="form-control" id="select">
+                <?php populate_combobox_department(); ?>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword" class="col-sm-2 control-label">Default Number</label>
+              <div class="col-sm-8">
+                 <?php get_default_number(); ?>
+              </div>
             </div>
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button id="submit" class="btn btn-primary">Add</button>
+                <button id="delete" class="btn btn-danger">Delete</button>
+                <button id="submit" class="btn btn-primary">Update</button>
                 <button id="cancel" class="btn btn-default">Cancel</button>
               </div>
             </div>

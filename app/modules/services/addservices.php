@@ -1,5 +1,15 @@
-<!DOCTYPE html>
-<html>
+<?php ob_start();?>
+<?php session_start();?>
+<?php include 'getPreviewData.php'; ?>
+<?php 
+  if(!$_SESSION['loggedin']){
+      header("Location: HTTP/1.1 404 File Not Found", 404);
+      exit;
+  }
+?>
+
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
  <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
@@ -12,7 +22,6 @@
     <!-- Animation library for notifications   -->
     <link href="../../assets/css/animate.min.css" rel="stylesheet"/>
     <!--  Light Bootstrap Table core CSS    -->
-    <link href="../../assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="../../assets/css/demo.css" rel="stylesheet" />
     <!--     Fonts and icons     -->
@@ -29,42 +38,78 @@
     <!--  Notifications Plugin    -->
     <script src="../../assets/js/bootstrap-notify.js"></script>
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-    <script src="../../assets/js/light-bootstrap-dashboard.js"></script>
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <!-- Custom JS -->
     <script src="addservice.js"></script>
     <style type="text/css">
-      body{
-        width: 70%;
-        margin-top: 30px;
-        margin-left: 30px;
-        overflow: hidden;
-      }
+        body{
+          background-color: #fd6b68;
+        }
+        .form{
+          width: 900px;
+          height: 600px;
+          margin: 0 auto;
+          margin-top: 3%;
+          background-color: white;
+          padding: 20px 20px 20px 20px;
+        }
+        .navbar-brand {
+          color: white;
+        }
+        legend{
+          text-align: center;
+        }
+        .navbar-brand a{
+          color: white;
+        }
+        fieldset{
+          width: 100%;
+        }
     </style>
 </head>
 <body>
-  <div class="form-horizontal">
-  <fieldset>
-    <legend>Add Service</legend>
-    <div class="form-group">
-      <label for="inputPassword" class="col-lg-2 control-label">Name</label>
-      <div class="col-lg-5">
-        <input type="text" class="form-control" id="inputName" placeholder="Name">
+
+<div class="wrapper">
+    <div class="form">
+        <div class="form-horizontal">
+          <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" style="color: white;">QMSMS | DAVAO CITY</a>
+              </div>
+            </div>
+          </nav>
+          <legend>ADD SERVICE</legend>
+          <fieldset>
+            <div class="form-group">
+              <label for="inputPassword" class="col-sm-2 control-label" >Name</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputName" placeholder="Name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="select" class="col-lg-2 control-label">Department</label>
+              <div class="col-lg-8">
+                <select class="form-control" id="select">
+                <?php populate_combobox_department(); ?>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword" class="col-sm-2 control-label">Default Number</label>
+              <div class="col-sm-8">
+                 <?php get_default_number(); ?>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button id="submit" class="btn btn-primary">Add</button>
+                <button id="cancel" class="btn btn-default">Cancel</button>
+              </div>
+            </div>
+          </fieldset>
         </div>
-    </div>
-    <div class="form-group">
-      <label for="inputPassword" class="col-lg-2 control-label">Default Number</label>
-      <div class="col-lg-5">
-        <input type="text" class="form-control" id="inputDefaultNumber" placeholder="Default Number">
-        </div>
-    </div>
-    <div class="form-group">
-      <div class="col-lg-8 col-lg-offset-2">
-        <button id="cancel" class="btn btn-default">Cancel</button>
-        <button id="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-  </fieldset>
+    </div>   
 </div>
 </body>
 </html>

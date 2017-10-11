@@ -10,6 +10,7 @@
                             <div class="header">
                                 <a href="modules/services/addservices.php" target="_blank" type="button" class="btn btn-info">
                                   <span class="fa fa-plus" aria-hidden="true"></span>
+                                  Add Service
                                 </a>
                                <h2>Services</h2>
                             </div>
@@ -17,8 +18,10 @@
                                 <table class="table table-hover table-striped">
                                     <thead>
                                         <th>Service Id</th>
-                                        <th>Name</th>
+                                        <th>Department</th>
+                                        <th>Service Name</th>
                                         <th>Default Number</th>
+                                        <th>Edit</th>
                                     </thead>
                                         <?php populate_table();?>
                                 </table>

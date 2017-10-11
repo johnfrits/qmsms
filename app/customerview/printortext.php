@@ -99,10 +99,11 @@
         <div id="divToPrint" style="display:none;" >
             <div style="text-align: center">
                 <h1>QMSMS | DAVAO CITY</h1>
-                <h2>Ticket Number</h2>
+                <b><h2>Ticket Number</h2></b>
                 <h1 id="ticketNumber"></h1>
                 <h3>Total customer(s) waiting</h3>
                 <h3 id="waiting"></h3>
+                <h4 id="depserv">Department - Management | Service - Payment</h4>
                 <h5 id="datetime"></h5>            
             </div>
         </div>
@@ -125,6 +126,7 @@
                 $('#datetime').text(date);
                 $('#ticketNumber').text(data['ticketNumber']);
                 $('#waiting').text(data['waiting']);
+                $('#depserv').text('Department - ' + data['DepartmentName'] + ' | ' + 'Service - ' + data['ServiceName']);
                 var divToPrint = document.getElementById('divToPrint');
                 var popupWin = window.open('', '_blank', 'width=900,height=900');
                 popupWin.document.open();

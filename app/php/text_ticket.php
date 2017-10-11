@@ -1,12 +1,12 @@
 <?php
     
-    function textTicket($mobile_number, $ticket, $waiting){
+    function textTicket($mobile_number, $ticket){
 
         $str = substr($mobile_number, 1);
         $mobileNumber = (string)"63" . $str;
         $userTicket = (string)$ticket;
         $messageId = (string)mt_rand(1000000000, 9999999999);
-        $messageToUser = "Thank you for using QMSMS: Your Ticket Number: ".$userTicket." Please wait for your ticket number to be called. Total customer(s) waiting: ".$waiting."";
+        $messageToUser = "Thank you for using QMSMS: Your Ticket Number: ".$userTicket." Please wait for your ticket number to be called. You're 5th in line.";
         $arr_post_body = array(
             "message_type" => "SEND",
             "mobile_number" => $mobileNumber,

@@ -5,6 +5,8 @@
  	$serviceId = $_GET['serviceid'];
 	$ticketNumber = "";
 	$waiting = "";
+	$serviceName = "";
+	$departName = "";
 	$data = array();
 
  	$sql = "SELECT *
@@ -46,6 +48,22 @@
 
 		$data['ticketNumber'] = $ticketNumber;
 	}
+
+	$sql = "SELECT s.Name AS ServiceName, d.name AS DepartmentName
+			FROM services s
+			LEFT JOIN department d ON d.departmentId = s.departmentId
+			WHERE ServiceID = $serviceId";
+
+			$result = $con->query($sql);
+
+			while ($row = $result->fetch_assoc()) {
+				$serviceName = $row['ServiceName'];
+				$departName = $row['DepartmentName'];
+			}
+
+			$data['ServiceName'] = $serviceName;
+		 	$data['DepartmentName'] = $departName;
+
 
     $sql = "INSERT INTO customers (PhoneNumber) 
     		VALUES ('$customerInput')";

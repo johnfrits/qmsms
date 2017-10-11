@@ -1,3 +1,6 @@
+<?php session_start();?>
+<?php include 'populate_dashboard.php'; ?>
+
 <div class="row" ng-controller = 'dashboardController'>
     <div class="col-md-4">
             <div class="card">
@@ -7,10 +10,10 @@
                 </div>
                <div class="content">
                     <div class="footer">
-                        <h2 class="text-success">300</h2>
+                        <?php today_queue(); ?>
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-clock-o"></i> Updated last 2 minutes ago.
+                            <i class="fa fa-clock-o"></i> Updated last 1 minutes ago.
                         </div>
                     </div>
                 </div>
@@ -24,10 +27,10 @@
                 </div>
                 <div class="content">
                     <div class="footer">
-                        <h2 class="text-warning">300</h2>
+                        <?php today_missed(); ?>
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-clock-o"></i> Updated last 2 minutes ago.
+                            <i class="fa fa-clock-o"></i> Updated last 1 minutes ago.
                         </div>
                     </div>
                 </div>
@@ -43,10 +46,10 @@
                 </div>
                 <div class="content">
                     <div class="footer">
-                        <h2 class="text-info">300</h2>
+                        <?php today_served(); ?>
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-clock-o"></i> Updated last 2 minutes ago.
+                            <i class="fa fa-clock-o"></i> Updated last 1 minutes ago.
                         </div>
                     </div>
                 </div>
@@ -55,15 +58,15 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Over Time</h4>
+                    <h4 class="title">Total Served</h4>
                     <p class="category">July 14, 2017</p>
                 </div>
                <div class="content">
                     <div class="footer">
-                        <h2 class="text-danger">300</h2>
+                          <?php total_served(); ?>
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-clock-o"></i> Updated last 2 minutes ago.
+                            <i class="fa fa-clock-o"></i> Updated last 1 minutes ago.
                         </div>
                     </div>
                 </div>

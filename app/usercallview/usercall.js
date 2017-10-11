@@ -5,6 +5,20 @@ $(document).ready(function() {
   var queueid = 0; 
   var times = 3;
 
+  $.ajax({
+      type: 'GET',
+      url: 'getinfocallview.php?usersID=' + userid +'',
+      success: function(response){
+        res = JSON.parse(response);
+        if(res['Counter'] && res['Service'])
+        {
+            $('#name').html(res['Counter']);
+            $('#nameservice').html(res['Service']);
+        }
+      }
+   }); 
+
+
   $('#callnext').click(function(){
      $.ajax({
         type: 'GET',

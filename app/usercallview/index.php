@@ -58,6 +58,7 @@
 	 	<div class="wrapper">	
 	 		<h1 class="text-center">QMSMS</h1>
 	 		<h2 id="name" class="text-center">COUNTER</h2>
+	 		<h2 id="nameservice" class="text-center">PAYMENT</h2>
 		    <form class="form-signin" method="POST"> 
 		    	<div class="items">
 			    	<div id="onqueue">

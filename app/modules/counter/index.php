@@ -10,6 +10,7 @@
                             <div class="header">
                                  <a href="modules/counter/addcounter.php" target="_blank" type="button" class="btn btn-info">
                                   <span class="fa fa-plus" aria-hidden="true"></span>
+                                  Add Counter
                                 </a>
                                <h2>Counters</h2>
                             </div>

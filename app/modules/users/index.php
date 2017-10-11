@@ -10,6 +10,7 @@
                             <div class="header">
                                   <a href="modules/users/adduser.php" target="_blank" type="button" class="btn btn-info">
                                   <span class="fa fa-plus" aria-hidden="true"></span>
+                                  Add User
                                 </a>
                                <h2>Users</h2>
                             </div>
