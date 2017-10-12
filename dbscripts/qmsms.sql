@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2017 at 04:46 AM
+-- Generation Time: Oct 12, 2017 at 07:40 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -36,17 +36,6 @@ CREATE TABLE `calls` (
   `CalledDateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `calls`
---
-
-INSERT INTO `calls` (`CallID`, `QueueID`, `CountersID`, `UsersID`, `CalledDateTime`) VALUES
-(335, 275, 11, 1, '2017-10-12 10:37:40'),
-(336, 275, 11, 1, '2017-10-12 10:37:58'),
-(337, 275, 11, 1, '2017-10-12 10:38:05'),
-(338, 275, 11, 1, '2017-10-12 10:38:10'),
-(339, 275, 11, 1, '2017-10-12 10:38:16');
-
 -- --------------------------------------------------------
 
 --
@@ -78,13 +67,6 @@ CREATE TABLE `customers` (
   `PhoneNumber` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`CustomerID`, `PhoneNumber`) VALUES
-(272, 'printed');
-
 -- --------------------------------------------------------
 
 --
@@ -103,7 +85,7 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`departmentId`, `name`, `datecreated`, `status`) VALUES
-(8, 'FInance', '2017-10-12 10:35:37', 'Active');
+(8, 'Finance', '2017-10-12 10:35:37', 'Active');
 
 -- --------------------------------------------------------
 
@@ -120,13 +102,6 @@ CREATE TABLE `queues` (
   `Missed` int(11) NOT NULL DEFAULT '0',
   `CreatedDateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `queues`
---
-
-INSERT INTO `queues` (`QueueID`, `ServiceID`, `CustomerID`, `TicketNumber`, `Called`, `Missed`, `CreatedDateTime`) VALUES
-(275, 17, 272, 1001, 1, 1, '2017-10-12 10:36:19');
 
 -- --------------------------------------------------------
 
@@ -227,7 +202,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `calls`
 --
 ALTER TABLE `calls`
-  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=340;
+  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=407;
 --
 -- AUTO_INCREMENT for table `counters`
 --
@@ -237,7 +212,7 @@ ALTER TABLE `counters`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=273;
+  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=288;
 --
 -- AUTO_INCREMENT for table `department`
 --
@@ -247,7 +222,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `queues`
 --
 ALTER TABLE `queues`
-  MODIFY `QueueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=276;
+  MODIFY `QueueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
 --
 -- AUTO_INCREMENT for table `services`
 --
