@@ -25,10 +25,10 @@
     				AND CreatedDateTime > CURRENT_DATE";
 
     		$result = $con->query($sql);
-
-        	while ($row = $result->fetch_assoc()) {
-           		$count = $row['COUNT(ServiceID)'];
-           	}
+        
+      	while ($row = $result->fetch_assoc()) {
+       		 $count = $row['COUNT(ServiceID)'];
+       	}
     		echo '<h2 class="text-success">'.$count.'</h2>';
 	}
 

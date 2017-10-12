@@ -23,14 +23,27 @@
 		while ($row = $result->fetch_assoc()) {
 		  $counterId = $row['CountersID'];
 		}
-		$sql = "UPDATE users
-		SET name 				= '$Name' 
-			,Username 			= '$username'
-			,Password 			= '$password'
-			,Email 				= '$email'
-			,Role 				= '$role'
-			,AssignedCounterID	=  $counterId
-		WHERE UserID 			=$UserId ";
+
+		if($password != ""){
+
+			$sql = "UPDATE users
+			SET name 				= '$Name' 
+				,Username 			= '$username'
+				,Password 			= '$password'
+				,Email 				= '$email'
+				,Role 				= '$role'
+				,AssignedCounterID	=  $counterId
+			WHERE UserID 			=$UserId ";
+		}else{
+			$sql = "UPDATE users
+			SET name 				= '$Name' 
+				,Username 			= '$username'
+				,Email 				= '$email'
+				,Role 				= '$role'
+				,AssignedCounterID	=  $counterId
+			WHERE UserID 			=$UserId ";
+		}
+	
 
 		if ($con->query($sql) === TRUE)
 		    $data['success'] = true;

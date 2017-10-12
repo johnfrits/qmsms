@@ -5,7 +5,7 @@
     <div class="col-md-4">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Today Queue</h4>
+                    <h4 class="title">Today Queued</h4>
                    <p class="category">  {{date | date:'MMMM d, y'}} </p>
                 </div>
                <div class="content">
