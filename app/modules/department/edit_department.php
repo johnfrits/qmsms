@@ -49,7 +49,7 @@
           width: 900px;
           height: 600px;
           margin: 0 auto;
-          margin-top: 100px;
+          margin-top: 3%;
           background-color: white;
           padding: 20px 20px 20px 20px;
         }
