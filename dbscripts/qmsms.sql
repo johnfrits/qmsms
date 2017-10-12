@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2017 at 11:12 AM
+-- Generation Time: Oct 12, 2017 at 04:15 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -178,7 +178,13 @@ INSERT INTO `calls` (`CallID`, `QueueID`, `CountersID`, `UsersID`, `CalledDateTi
 (325, 249, 6, 1, '2017-10-11 03:47:40'),
 (326, 249, 6, 1, '2017-10-11 03:47:41'),
 (327, 249, 6, 1, '2017-10-11 03:47:42'),
-(328, 250, 6, 1, '2017-10-11 03:47:42');
+(328, 250, 6, 1, '2017-10-11 03:47:42'),
+(329, 272, 6, 1, '2017-10-12 05:05:24'),
+(330, 273, 6, 1, '2017-10-12 05:05:31'),
+(331, 273, 6, 1, '2017-10-12 05:05:36'),
+(332, 273, 6, 1, '2017-10-12 05:05:37'),
+(333, 273, 6, 1, '2017-10-12 05:05:38'),
+(334, 273, 6, 1, '2017-10-12 05:05:38');
 
 -- --------------------------------------------------------
 
@@ -189,16 +195,21 @@ INSERT INTO `calls` (`CallID`, `QueueID`, `CountersID`, `UsersID`, `CalledDateTi
 CREATE TABLE `counters` (
   `CountersID` int(11) NOT NULL,
   `Name` varchar(50) NOT NULL,
-  `AssignedService` int(11) NOT NULL
+  `AssignedService` int(11) NOT NULL,
+  `status` varchar(11) NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `counters`
 --
 
-INSERT INTO `counters` (`CountersID`, `Name`, `AssignedService`) VALUES
-(5, 'Counter 1', 10),
-(6, 'Counter 2', 14);
+INSERT INTO `counters` (`CountersID`, `Name`, `AssignedService`, `status`) VALUES
+(5, 'Counter 1', 10, 'Active'),
+(6, 'Counter 2', 15, 'Active'),
+(7, 'Counter 3', 12, 'Active'),
+(8, 'Counter 4', 11, 'Active'),
+(9, 'Counter 5', 13, 'Active'),
+(10, 'Counter 6', 14, 'Active');
 
 -- --------------------------------------------------------
 
@@ -327,7 +338,10 @@ INSERT INTO `customers` (`CustomerID`, `PhoneNumber`) VALUES
 (265, '09179545286'),
 (266, '09179545286'),
 (267, '09179545286'),
-(268, 'printed');
+(268, 'printed'),
+(269, 'printed'),
+(270, 'printed'),
+(271, 'printed');
 
 -- --------------------------------------------------------
 
@@ -440,7 +454,10 @@ INSERT INTO `queues` (`QueueID`, `ServiceID`, `CustomerID`, `TicketNumber`, `Cal
 (268, 14, 265, 5017, 0, 0, '2017-10-11 03:41:49'),
 (269, 14, 266, 5018, 0, 0, '2017-10-11 03:43:16'),
 (270, 14, 267, 5019, 0, 0, '2017-10-11 03:43:39'),
-(271, 15, 268, 6003, 0, 0, '2017-10-11 04:02:44');
+(271, 15, 268, 6003, 0, 0, '2017-10-11 04:02:44'),
+(272, 15, 269, 6004, 1, 0, '2017-10-12 05:04:50'),
+(273, 15, 270, 6005, 1, 1, '2017-10-12 05:04:54'),
+(274, 15, 271, 6006, 0, 0, '2017-10-12 09:21:52');
 
 -- --------------------------------------------------------
 
@@ -461,7 +478,7 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`ServiceID`, `departmentId`, `Name`, `DefaultNumber`, `status`) VALUES
-(10, 2, 'Payment', 1000, 'Not Active'),
+(10, 2, 'Payment', 1000, 'Active'),
 (11, 2, 'TrY', 2000, 'Active'),
 (12, 1, 'Fin123', 3000, 'Active'),
 (13, 1, 'Finance123434', 4000, 'Active'),
@@ -481,15 +498,18 @@ CREATE TABLE `users` (
   `Password` longtext NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Role` varchar(20) NOT NULL,
-  `AssignedCounterID` int(11) NOT NULL
+  `AssignedCounterID` int(11) NOT NULL,
+  `status` varchar(11) NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UserID`, `Name`, `Username`, `Password`, `Email`, `Role`, `AssignedCounterID`) VALUES
-(1, 'Jade', 'admin', 'admin', 'jade@gmail.com', 'Administrator', 6);
+INSERT INTO `users` (`UserID`, `Name`, `Username`, `Password`, `Email`, `Role`, `AssignedCounterID`, `status`) VALUES
+(1, 'Jade', 'admin', 'admin', 'jade@gmail.com', 'Administrator', 6, 'Active'),
+(4, 'France', 'final111', 'test', 'test@gmail.com', 'Staff', 5, 'Active'),
+(5, 'Test', 'qwerty123', '123', 'res@gmail.com', 'Staff', 7, 'Active');
 
 --
 -- Indexes for dumped tables
@@ -545,17 +565,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `calls`
 --
 ALTER TABLE `calls`
-  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=329;
+  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=335;
 --
 -- AUTO_INCREMENT for table `counters`
 --
 ALTER TABLE `counters`
-  MODIFY `CountersID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `CountersID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
+  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=272;
 --
 -- AUTO_INCREMENT for table `department`
 --
@@ -565,17 +585,17 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `queues`
 --
 ALTER TABLE `queues`
-  MODIFY `QueueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=272;
+  MODIFY `QueueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=275;
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `ServiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ServiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;COMMIT;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
