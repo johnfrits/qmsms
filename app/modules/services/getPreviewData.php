@@ -6,8 +6,7 @@
 
     $sql = "SELECT *
             FROM department d
-            WHERE status = 'Active'
-            AND NOT EXISTS (SELECT * FROM services s WHERE s.departmentId = d.departmentId AND status = 'Active')";
+            WHERE status = 'Active'";
 
     $result = $con->query($sql);
 
