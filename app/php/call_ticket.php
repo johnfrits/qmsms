@@ -1,4 +1,5 @@
 <?php require_once 'db_connection/connection.php'; ?>
+<?php require_once 'getnthqueue.php'; ?>
 <?php
  	
  	$data = array();
@@ -48,7 +49,7 @@
 					}
 
 					$sql = "INSERT INTO calls (QueueID, CountersID, UsersID) 
-						VALUES ( '$queueid', $counterid, '$userid' ) ";
+						VALUES ( '$queueid', $counterid, '$userid' ) "; 
 
 					if($con->query($sql) == TRUE ){
 						$data['status'] = 'success';
@@ -109,26 +110,12 @@
 					$result = $con->query($sql);
 					$served = $result->num_rows;
 
+					getnthqueue($serviceid);
 
 					$sql = "INSERT INTO calls (QueueID, CountersID, UsersID) 
 						VALUES ( '$queueid', $counterid , '$userid' ) ";
 		
 					if($con->query($sql) == TRUE ){
-
-
-						// $sql = "SELECT TOP 5 as
-						// 	 	FROM queues q 
-						// 		LEFT JOIN customers c ON c.CustomerID = 
-						// 		WHERE q.ServiceID = $serviceid
-						// 		AND q.Called = 0;
-						// 		AND q.CreatedDateTime > CURRENT_DATE";
-
-						// $result = $con->query($sql);
-
-						// while ($row = $result->fetch_assoc()) {
-						// 	$queueid = $row['QueueID'];
-						// 	$ticketNumber = $row['TicketNumber'];
-						// }
 
 						$data['status'] = 'success';
 						$data['queueid'] = $queueid;
