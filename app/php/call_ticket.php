@@ -110,7 +110,10 @@
 					$result = $con->query($sql);
 					$served = $result->num_rows;
 
-					getnthqueue($serviceid);
+					if($onqueue > 5){
+						getnthqueue($serviceid);
+					}
+
 
 					$sql = "INSERT INTO calls (QueueID, CountersID, UsersID) 
 						VALUES ( '$queueid', $counterid , '$userid' ) ";

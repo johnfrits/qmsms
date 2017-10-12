@@ -26,6 +26,7 @@
 		while ($row = $result->fetch_assoc()) {
 			$PhoneNumber = $row['PhoneNumber'];
 			$TicketNumber = $row['TicketNumber'];
+			
 			if($PhoneNumber != "" && $TicketNumber != "" && $PhoneNumber != "printed"){
 				if(textTicket($PhoneNumber, $TicketNumber)){
 					return true;
