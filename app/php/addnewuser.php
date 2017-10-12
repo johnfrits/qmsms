@@ -7,9 +7,20 @@
  	$email = $_GET['email'];
  	$role = $_GET['role'];
  	$assignedCounter = $_GET['assignedCounter'];
+ 	$counterId;
+ 	
+	$sql = "SELECT *
+    FROM counters
+    WHERE Name = '$assignedCounter'";
+
+    $result = $con->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+      $counterId = $row['CountersID'];
+    }
 
     $sql = "INSERT INTO Users (Name, Username, Password, Email, Role, AssignedCounterID ) 
-    		VALUES ('$Name' , '$username' , '$password' , '$email' , '$role' , '$assignedCounter')";
+    		VALUES ('$Name' , '$username' , '$password' , '$email' , '$role' , '$counterId')";
 
 	if($con->query($sql) == TRUE ){
 		$data['status'] = 'success';

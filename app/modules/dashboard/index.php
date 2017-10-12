@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="header">
                     <h4 class="title">Today Queue</h4>
-                    <p class="category">July 14, 2017</p>
+                   <p class="category">  {{date | date:'MMMM d, y'}} </p>
                 </div>
                <div class="content">
                     <div class="footer">
@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="header">
                     <h4 class="title">Today Missed</h4>
-                    <p class="category">July 14, 2017</p>
+                     <p class="category">  {{date | date:'MMMM d, y'}} </p>
                 </div>
                 <div class="content">
                     <div class="footer">
@@ -37,12 +37,12 @@
             </div>
         </div>  
     </div>
-     <div class="row">
+<div class="row" ng-controller = 'dashboardController'>
         <div class="col-md-4">
             <div class="card">
                 <div class="header">
                     <h4 class="title">Today Served</h4>
-                    <p class="category">July 14, 2017</p>
+                    <p class="category">  {{date | date:'MMMM d, y'}} </p>
                 </div>
                 <div class="content">
                     <div class="footer">
@@ -59,7 +59,7 @@
             <div class="card">
                 <div class="header">
                     <h4 class="title">Total Served</h4>
-                    <p class="category">July 14, 2017</p>
+                    <p class="category"> As of {{date | date:'MMMM d, y'}} </p>
                 </div>
                <div class="content">
                     <div class="footer">

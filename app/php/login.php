@@ -21,6 +21,14 @@
 				$_SESSION['Role'] 	 				= $row['Role'];
 				$_SESSION['Name']   	 			= $row['Name'];
 				$_SESSION['AssignedCounterID']    	= $row['AssignedCounterID'];
+				$CountersID = $row['AssignedCounterID'];
+
+				$sql = " SELECT * FROM counters WHERE CountersID = $CountersID ";
+				$result = $con->query($sql);
+				while($row = $result->fetch_assoc()){
+					$_SESSION['CounterName']  = $row['Name'];
+				}
+
 				$_SESSION['loggedin']    			= true;
 				//go to app
 				header('Location: app/');

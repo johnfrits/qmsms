@@ -1,40 +1,38 @@
  $(document).ready(function() {
 
-    var serviceId = getParameterByName('serviceId');
+    var counterId = getParameterByName('counterId');
     var url = null;
     var name = null;
 
 
 
-    if(serviceId){
+    if(counterId){
 
-        url = '../../php/getservices.php?serviceId='+ serviceId + '';
+        url = '../../php/getcounter.php?counterId='+ counterId + '';
 
         $.post(url, $(this).serialize(),function(data) {
             if ( data['success'] ) {
                 $("#inputName").val(data["name"]);  
-                $("#defaultNumber").val(data["defaultNumber"]);
-                var deptName =  data["deptName"];  
-                $('#select').append('<option>'+ deptName +'</option>')
-                $("#select").val(data["deptName"]);
+                var assignedService =  data["assignedService"];  
+                $('#select').append('<option>'+ assignedService +'</option>')
+                $("#select").val(data["assignedService"]);
             } 
         },'JSON');
 
     }
 
+
     //for submit
-    $('#submit').click(function(){
-        name = $('#inputName').val();
-        defaultNumber = $('#defaultNumber').val();
-        deptName = $('#select').find(":selected").text();
-        if(name){
-            url = '../../php/update_services.php?serviceId=' + serviceId + '&name='+ name +'&defaultNumber='+ defaultNumber+ '&deptName='+ deptName + '';  
+    $('#submit').click(function(){ 
+        counterName = $('#select').find(":selected").text();
+        if(counterName){
+            url = '../../php/update_counter.php?counterId=' + counterId + '&counterName='+ counterName + '';  
             $.post(url, $(this).serialize(),function(data) {
                 if ( data['success']) {
-                    alert("Service Update");
+                    alert("Counter Update");
                   window.close();
                 } else {
-                    alert("Service Not Update");
+                    alert("Counter Not Update");
                 }
             },'JSON');
         }
@@ -45,15 +43,15 @@
         name = $('#inputName').val();
         if(name){
 
-            if(confirm('DO YOU WANT TO DELETE THE ' + name.toUpperCase() +' SERVICE ?')){
+            if(confirm('DO YOU WANT TO DELETE THE ' + name.toUpperCase() +'?')){
                 name = 'Active';
-                url = '../../php/update_services.php?name='+ name + '&serviceId='+ serviceId + '';
+                url = '../../php/update_counter.php?counterName='+ name + '&counterId='+ counterId + '';
                 $.post(url, $(this).serialize(),function(data) {
                     if ( data['success']) {
-                        alert("Department Deleted");
+                        alert("Counter Deleted");
                       window.close();
                     } else {
-                        alert("Department Not Deleted");
+                        alert("Counter Not Deleted");
                     }
                 },'JSON');
             }else{

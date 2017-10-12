@@ -106,15 +106,15 @@
          	$counterId = $_SESSION['AssignedCounterID'];
        	} 
 
-       	$sql = "SELECT *
-       			FROM Counters
-       			WHERE CountersID = '$counterId'";
+   	$sql = "SELECT *
+   			FROM Counters
+   			WHERE CountersID = '$counterId'";
 
-       	$result = $con->query($sql);
+   	$result = $con->query($sql);
 
-       	while ($row = $result->fetch_assoc()) {
-       		$serviceId = $row['AssignedService'];
-       	}
+   	while ($row = $result->fetch_assoc()) {
+   		$serviceId = $row['AssignedService'];
+   	}
 
 		$sql = "SELECT COUNT(ServiceID)
 				FROM  queues

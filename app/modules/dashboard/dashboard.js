@@ -10,7 +10,7 @@
     function DashboardController2($scope, Page) {
         // create a message to display in our view
         Page.setTitle('Dashboard');
-        
+        $scope.date = new Date();
     }
 
 })();

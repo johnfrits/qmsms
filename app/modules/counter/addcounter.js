@@ -8,10 +8,10 @@
     var name = null;
     var assignedService = null;
 
-    name = $('#inputName').val();
-    assignedService = $('#inputAssignedService').val();
+    name = $('#couterName').val();
+    assignedService = $('#select').find(":selected").text();
 
-    if(name != null && assignedService != null){
+    if(name.length > 0 && assignedService.length > 0){
 
         url = '../../php/addnewcounter.php?name='+ name +'&assignedService='+ assignedService+ ''; 
  

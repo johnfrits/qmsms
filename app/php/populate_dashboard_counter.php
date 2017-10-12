@@ -5,37 +5,30 @@
 
 	function populate_table(){
 
-		global $counterId, $serviceId, $con;
+		global $con;
 
-		if(isset($_SESSION['AssignedCounterID'])) {
-         	$counterId = $_SESSION['AssignedCounterID'];
-       	} 
-
-       	$sql = "SELECT *
-       			FROM Counters
-       			WHERE CountersID = '$counterId'";
-
-       	$result = $con->query($sql);
-
-       	while ($row = $result->fetch_assoc()) {
-       		$serviceId = $row['AssignedService'];
-       	}
-
-		$sql = 'SELECT *
-				FROM  Counters';
+		$sql = "SELECT c.CountersID, c.Name as CounterName, s.Name as AssignedService
+				FROM  Counters c 
+				LEFT JOIN Services s ON s.ServiceID = C.AssignedService
+				WHERE c.status = 'Active'";
 
 		$result = $con->query($sql);
 
 		
 		while ($row = $result->fetch_assoc()) {
 
-			echo '<tbody>
+			echo "<tbody>
 	            <tr>
-	                <td>'. $row['CountersID'] .'</td>
-	                <td>'. $row['Name'] .'</td>
-	                <td>'. $row['AssignedService'] .'</td>
+	                <td>". $row['CountersID'] ."</td>
+	                <td>". $row['CounterName'] ."</td>
+	                <td>". $row['AssignedService'] ."</td>
+	                  <td>
+                    <a href='../app/modules/counter/edit_counter.php?counterId=".$row['CountersID']."' target='_blank' type='button' class='btn btn-warning'>
+                    <span class='fa fa-pencil-square' aria-hidden='true'></span>
+                    </a>
+               	 	</td>
 	            </tr>
-	        </tbody>';
+	        </tbody>";
 
 		}
 	}

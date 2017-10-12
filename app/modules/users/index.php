@@ -21,7 +21,8 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Role</th>
-                                        <th>AssignedCounterId</th>
+                                        <th>Assigned Counter</th>
+                                        <th>Edit</th>
                                     </thead>
                                         <?php 
                                         if(isset($_SESSION['userID'])) {

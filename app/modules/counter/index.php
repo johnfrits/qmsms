@@ -18,8 +18,9 @@
                                 <table class="table table-hover table-striped">
                                     <thead>
                                         <th>Counter Id</th>
-                                        <th>Name</th>
-                                        <th>AssignedService</th>
+                                        <th>Counter Name</th>
+                                        <th>Assigned Service</th>
+                                        <th>Edit</th>
                                     </thead>
                                         <?php populate_table();?>
                                 </table>

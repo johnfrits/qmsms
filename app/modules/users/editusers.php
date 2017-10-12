@@ -40,7 +40,7 @@
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <!-- Custom JS -->
-    <script src="adduser.js"></script>
+    <script src="editusers.js"></script>
     <style type="text/css">
         body{
           background-color: #fd6b68;
@@ -79,8 +79,8 @@
               </div>
             </div>
           </nav>
-          <legend>ADD USER</legend>
-          <fieldset>
+          <legend>EDIT COUNTER</legend>
+         <fieldset>
             <div class="form-group">
               <label for="inputPassword" class="col-lg-3 control-label">Name</label>
               <div class="col-lg-5">
@@ -94,9 +94,15 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="inputPassword" class="col-lg-3 control-label">Password</label>
+              <label for="inputPassword" class="col-lg-3 control-label">Old Password</label>
               <div class="col-lg-5">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                <input type="password" class="form-control" id="oldinputPassword" placeholder="Old Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword" class="col-lg-3 control-label">New Password</label>
+              <div class="col-lg-5">
+                <input type="password" class="form-control" id="newinputPassword" placeholder="New Password">
               </div>
             </div>
              <div class="form-group">
@@ -124,12 +130,15 @@
               <label for="select" class="col-lg-3 control-label">Assigned Counter</label>
               <div class="col-lg-5">
                 <select class="form-control" id="selectCounter">
-                <?php populate_combobox_counter(); ?>
+                <?php 
+                    populate_combobox_counter();
+                 ?>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-8 col-lg-offset-3">
+                <button id="delete" class="btn btn-danger">Delete</button>
                 <button id="cancel" class="btn btn-default">Cancel</button>
                 <button id="submit" class="btn btn-primary">Submit</button>
               </div>
@@ -140,3 +149,4 @@
 </div>
 </body>
 </html>
+

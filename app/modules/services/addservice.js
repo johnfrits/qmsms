@@ -13,7 +13,7 @@
     deptName = $('#select').find(":selected").text();
 
 
-    if(name != null && defaultNumber != null && deptName != null){
+    if(name.length > 0 && defaultNumber.length > 0 && deptName.length > 0){
 
         url = '../../php/addnewservice.php?name='+ name +'&defaultNumber='+ defaultNumber+ '&deptName='+ deptName + '';  
  

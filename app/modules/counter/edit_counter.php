@@ -1,6 +1,6 @@
 <?php ob_start();?>
 <?php session_start();?>
-<?php include 'getUserData.php'; ?>
+<?php include 'getServicesData.php'; ?>
 <?php 
   if(!$_SESSION['loggedin']){
       header("Location: HTTP/1.1 404 File Not Found", 404);
@@ -40,7 +40,7 @@
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <!-- Custom JS -->
-    <script src="adduser.js"></script>
+    <script src="edit_counter.js"></script>
     <style type="text/css">
         body{
           background-color: #fd6b68;
@@ -79,59 +79,27 @@
               </div>
             </div>
           </nav>
-          <legend>ADD USER</legend>
+          <legend>EDIT COUNTER</legend>
           <fieldset>
             <div class="form-group">
-              <label for="inputPassword" class="col-lg-3 control-label">Name</label>
-              <div class="col-lg-5">
-                <input type="text" class="form-control" id="inputName" placeholder="Name">
+              <label for="inputPassword" class="col-sm-2 control-label" >Name</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputName" placeholder="Name" readonly="readonly">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputPassword" class="col-lg-3 control-label">Username</label>
-              <div class="col-lg-5">
-                <input type="text" class="form-control" id="inputUsername" placeholder="Username">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputPassword" class="col-lg-3 control-label">Password</label>
-              <div class="col-lg-5">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-              </div>
-            </div>
-             <div class="form-group">
-              <label for="inputPassword" class="col-lg-3 control-label">Re-type Password</label>
-              <div class="col-lg-5">
-                <input type="password" class="form-control" id="inputRePassword" placeholder="Re-type Password">
-              </div>
-            </div>
-              <div class="form-group">
-              <label for="inputPassword" class="col-lg-3 control-label">Email</label>
-              <div class="col-lg-5">
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-              </div>
-            </div>
-               <div class="form-group">
-              <label for="select" class="col-lg-3 control-label">Role</label>
-              <div class="col-lg-5">
-                <select class="form-control" id="selectRole">
-                <option>Staff</option>
-                <option>Administrator</option>
-                </select>
-              </div>
-            </div>
-             <div class="form-group">
-              <label for="select" class="col-lg-3 control-label">Assigned Counter</label>
-              <div class="col-lg-5">
-                <select class="form-control" id="selectCounter">
-                <?php populate_combobox_counter(); ?>
+              <label for="select" class="col-lg-2 control-label">Service</label>
+              <div class="col-lg-8">
+                <select class="form-control" id="select">
+                 <?php populate_combobox_service(); ?>
                 </select>
               </div>
             </div>
             <div class="form-group">
-              <div class="col-lg-8 col-lg-offset-3">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button id="delete" class="btn btn-danger">Delete</button>
+                <button id="submit" class="btn btn-primary">Update</button>
                 <button id="cancel" class="btn btn-default">Cancel</button>
-                <button id="submit" class="btn btn-primary">Submit</button>
               </div>
             </div>
           </fieldset>

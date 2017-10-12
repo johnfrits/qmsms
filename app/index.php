@@ -218,8 +218,8 @@
                                 <li>   
                                     <a class="simple-text">
                                     <?php 
-                                        if(isset($_SESSION['Role']) && isset($_SESSION['AssignedCounterID'])) {
-                                            echo $_SESSION['Role'] . ' | Counter ' . $_SESSION['AssignedCounterID'] ;
+                                        if(isset($_SESSION['Role']) && isset($_SESSION['CounterName'])) {
+                                            echo $_SESSION['Role'] . ' | ' . $_SESSION['CounterName'] ;
                                         } 
                                      ?>
                                     </a>
