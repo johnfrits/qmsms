@@ -13,7 +13,7 @@
 
 
 	if($Name != 'Active'){
-
+		    
 		$sql = "SELECT *
         FROM counters
         WHERE name = '$assignedCounter'";

@@ -18,12 +18,18 @@
         url = '../../php/addnewservice.php?name='+ name +'&defaultNumber='+ defaultNumber+ '&deptName='+ deptName + '';  
  
         $.post(url, $(this).serialize(),function(data) {
-            if ( data['status']  == 'success') {
-              alert("Service Added");
-              window.close();
-            } else {
-                $('.alert').modal("show");
+            if ( data['servicenametaken']  == 'taken') {
+                   alert("Service Name has already been taken.");
+            }else{
+                if ( data['status']  == 'success') {
+                    alert("Service Added");
+                    window.close();
+                } else {
+                    $('.alert').modal("show");
+                }
             }
+
+           
         },'JSON');
     }
 

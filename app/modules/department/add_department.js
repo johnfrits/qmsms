@@ -14,12 +14,17 @@
         url = '../../php/addnewdepartment.php?name='+ name + '';
  
         $.post(url, $(this).serialize(),function(data) {
-            if ( data['status']  == 'success') {
-              alert("Department Added");
-              window.close();
-            } else {
-                $('.alert').modal("show");
+            if ( data['departmentnametaken']  == 'taken') {
+                 alert("Department Name has already been taken.");
+            }else{
+                if ( data['status']  == 'success') {
+                  alert("Department Added");
+                  window.close();
+                } else {
+                    $('.alert').modal("show");
+                }
             }
+         
         },'JSON');
     }
 

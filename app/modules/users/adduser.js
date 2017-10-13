@@ -28,11 +28,15 @@
             url = '../../php/addnewuser.php?name='+ name + '&username=' + Username + '&password='+ Password + '&email='+ Email + '&role=' + Role + '&assignedCounter='+ assignedCounter + ''; 
      
             $.post(url, $(this).serialize(),function(data) {
-                if ( data['status']  == 'success') {
-                  alert("User Added");
-                  window.close();
-                } else {
-                    $('.alert').modal("show");
+                if ( data['usernametaken']  == 'taken') {
+                      alert("Username has already been taken.");
+                }else{
+                    if ( data['status']  == 'success') {
+                        alert("User Added");
+                        window.close();
+                    } else {
+                        alert("User Not Added");
+                    }
                 }
             },'JSON');
         }

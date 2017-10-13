@@ -84,7 +84,7 @@
             <div class="form-group">
               <label for="inputPassword" class="col-sm-2 control-label" >Name</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputName" placeholder="Name">
+                <input type="text" class="form-control" id="inputName" placeholder="Name" readonly="readonly">
               </div>
             </div>
             <div class="form-group">
