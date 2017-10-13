@@ -45,8 +45,10 @@
 		}
 	
 
-		if ($con->query($sql) === TRUE)
+		if ($con->query($sql) === TRUE){
 		    $data['success'] = true;
+			$_SESSION['AssignedCounterID'] = $counterId;
+		}
 		else 
 		    $data['success'] = false;
 	}

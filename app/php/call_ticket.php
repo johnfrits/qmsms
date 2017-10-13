@@ -110,7 +110,7 @@
 					$result = $con->query($sql);
 					$served = $result->num_rows;
 
-					if($onqueue > 5){
+					if($onqueue >= 5){
 						getnthqueue($serviceid);
 					}
 
