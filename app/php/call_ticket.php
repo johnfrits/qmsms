@@ -96,7 +96,8 @@
 					$sql = 'SELECT *
 					FROM queues
 					WHERE Called = 0
-					AND ServiceID = '.$serviceid.'';
+					AND ServiceID = '.$serviceid.'
+					AND CreatedDateTime > CURRENT_DATE';
 
 					$result = $con->query($sql);
 					$onqueue = $result->num_rows;
@@ -105,7 +106,8 @@
 					$sql = 'SELECT *
 						FROM queues
 						WHERE Called = 1
-						AND ServiceID = '.$serviceid.'';
+						AND ServiceID = '.$serviceid.'
+						AND CreatedDateTime > CURRENT_DATE';
 
 					$result = $con->query($sql);
 					$served = $result->num_rows;

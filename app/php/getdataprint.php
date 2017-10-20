@@ -18,7 +18,7 @@
 
 	if($result->num_rows >= 1){
 
-		$sql = "SELECT MAX(TicketNumber) as TicketNumber
+	$sql = "SELECT MAX(TicketNumber) as TicketNumber, CreatedDateTime
 				FROM queues 
 				WHERE ServiceID = '$serviceId'";
 
@@ -26,11 +26,33 @@
 
 		while ($row = $result->fetch_assoc()) {
 			$ticketNumber = $row['TicketNumber'];
+			$getDate = $row['CreatedDateTime'];
 		}
 
-		$ticketNumber++;
+		$today = date("Y-m-d H:i:s");	
 
-		$data['ticketNumber'] = $ticketNumber;
+		if($today < $getDate){
+
+			$sql = "SELECT DefaultNumber 
+			FROM services 
+			WHERE ServiceID = '$serviceId'";
+
+			$result = $con->query($sql);
+
+			while ($row = $result->fetch_assoc()) {
+				$ticketNumber = $row['DefaultNumber'];
+			}
+
+			$ticketNumber++;
+			$data['ticketNumber'] = $ticketNumber;
+			
+		} else{
+
+			$ticketNumber++;
+			$data['ticketNumber'] = $ticketNumber;
+		}
+
+		
 		
 	}else{
 		// do this when theres no first queue

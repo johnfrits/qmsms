@@ -6,8 +6,7 @@
 
     $sql = "SELECT *
             FROM services s
-            WHERE status = 'Active'
-            AND NOT EXISTS (SELECT * FROM counters c WHERE c.AssignedService = s.ServiceID AND status = 'Active')";
+            WHERE status = 'Active'";
 
     $result = $con->query($sql);
 

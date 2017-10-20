@@ -64,6 +64,7 @@
          </div>
     </div>
     <div class="content">
+      <audio id="ding" src="../assets/sounds/ding.mp3" type="audio/mp3"></audio> 
       <table id="tbl" class="table table-bordered text-center"> 
         <th>
           <h1>COUNTER #</h1> 
@@ -109,6 +110,8 @@
                       $("#Prionumber" + incrementer).html(ticketNumber);
                       $("#Service" + incrementer).html(serviceName);
                       messageVoice = ('TicketNumber' + ticketNumber + ' Please proceed to '+ counterName);
+
+                       $('#ding').get(0).play();
                       responsiveVoice.speak(messageVoice);
                       
                       //  $("#Prionumber" + incrementer).blink({delay: 300});  
@@ -149,14 +152,16 @@
                   if( this.id == counterName){
                       $("#Prionumber" + incrementer).html(ticketNumber);
                       $("#Service" + incrementer).html(serviceName);
-                      messageVoice = ('TicketNumber' + ticketNumber + ' Please proceed to '+ counterName);
+                      messageVoice = ('ENKKKKK TicketNumber' + ticketNumber + ' Please proceed to '+ counterName);
+                      
+                       $('#ding').get(0).play();
                       responsiveVoice.speak(messageVoice);
 
 
-                      //  $("#Prionumber" + incrementer).blink({delay: 300});  
-                      // setTimeout(function(){
-                      //  $("#Prionumber" + incrementer).unblink();
-                      // }, 3000);
+                       $("#Prionumber" + incrementer).blink({delay: 300});  
+                      setTimeout(function(){
+                       $("#Prionumber" + incrementer).unblink();
+                      }, 3000);
                   }
                 }
             });

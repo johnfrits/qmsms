@@ -5,10 +5,6 @@
 
 	if(isset($_POST['username']) && isset($_POST['password'])){
 
-		if(!isset($_SESSION)){
-			$LoggedIn = "No";
-			updateLogin($LoggedIn, $UserID);
-		}
 
 		$username 			 = stripslashes($_POST['username']);
 		$password 			 = stripslashes($_POST['password']);
@@ -27,6 +23,10 @@
 				$LoggedIn 							= $row['LoggedIn'];
 				$UserID  							= $row['UserID'];
 
+				if(!isset($_SESSION['loggedin'])){
+					$LoggedIn = "No";
+					updateLogin($LoggedIn, $UserID);
+				}
 				if($LoggedIn == "No"){
 
 					$LoggedIn = "Yes";
