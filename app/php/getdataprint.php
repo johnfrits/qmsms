@@ -31,7 +31,7 @@
 
 		$today = date("Y-m-d H:i:s");	
 
-		if($today < $getDate){
+		if($today > $getDate){
 
 			$sql = "SELECT DefaultNumber 
 			FROM services 
@@ -45,11 +45,13 @@
 
 			$ticketNumber++;
 			$data['ticketNumber'] = $ticketNumber;
-			
+			$data['newticket'] = true;
+
 		} else{
 
 			$ticketNumber++;
 			$data['ticketNumber'] = $ticketNumber;
+			$data['newticket'] = false;
 		}
 
 		
