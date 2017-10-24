@@ -124,7 +124,7 @@
         $.post(url,$(this).serialize(),function(data) {
             if ( data['status']  == 'success') {
                 $('#datetime').text(date);
-                $('#ticketNumber').text(data['ticketNumber']);
+                $("#ticketNumber").text(data["Prefix"] + data["ticketNumber"]);
                 $('#waiting').text(data['waiting']);
                 $('#depserv').text('Department - ' + data['DepartmentName'] + ' | ' + 'Service - ' + data['ServiceName']);
                 var divToPrint = document.getElementById('divToPrint');

@@ -20,6 +20,7 @@
                                         <th>Service Id</th>
                                         <th>Department</th>
                                         <th>Service Name</th>
+                                         <th>Prefix</th>
                                         <th>Default Number</th>
                                         <th>Edit</th>
                                     </thead>

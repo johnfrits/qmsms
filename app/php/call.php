@@ -7,9 +7,10 @@
 	$QueueID = '';
 	$CountersID = '';
 	$serviceName = '';
+	$prefix = '';
 	$AssignedService = '';
 	$CounterName 	= '';
-
+	$count = 0;
 	//get last call
 	$sql = 'SELECT * 
 	FROM calls 
@@ -35,7 +36,15 @@
 	while ($row = $result->fetch_assoc()) {
 		$TicketNumber = $row['TicketNumber'];
 	}
+	//count how many counters
+	$sql = "SELECT *
+			FROM  counters";
 
+	$result = $con->query($sql);
+
+	while ($row = $result->fetch_assoc()) {
+		$count += 1;
+	}
 	// get counter assigned service 
 	$sql = "SELECT *
 			FROM  counters
@@ -57,6 +66,7 @@
 
 	while ($row = $result->fetch_assoc()) {
 		$serviceName = $row['Name'];
+		$prefix = $row['Prefix'];
 	}
 
 
@@ -65,6 +75,8 @@
 	$data['CounterName'] = $CounterName;
 	$data['TicketNumber'] = $TicketNumber;
 	$data['ServiceName'] = $serviceName;
+	$data['Prefix'] = $prefix;
+	$data['Count'] = $count;
 	echo json_encode($data);
 
 ?>

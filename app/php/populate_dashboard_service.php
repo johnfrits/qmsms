@@ -12,6 +12,7 @@
 				,d.name 			as Department
 				,s.Name 			as ServiceName 
 				,s.DefaultNumber	as DefaultNumber
+				,s.Prefix			as Prefix
 				FROM  Services s
 				LEFT JOIN department d 
 				ON d.departmentId = s.departmentId
@@ -27,6 +28,7 @@
 	                <td>". $row['ServiceID'] ."</td>
 	                <td>". $row['Department'] ."</td>
                     <td>". $row['ServiceName'] ."</td>
+                 	<td>". $row['Prefix'] ."</td>
 	                <td>". $row['DefaultNumber'] ."</td>
 	                <td>
                     <a href='../app/modules/services/edit_services.php?serviceId=".$row['ServiceID']."' target='_blank' type='button' class='btn btn-warning'>

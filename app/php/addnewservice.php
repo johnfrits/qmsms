@@ -5,6 +5,7 @@
  	$Name = $_GET['name'];
  	$DefaultNumber = $_GET['defaultNumber'];
  	$deptNameSelected = $_GET['deptName'];
+ 	$prefix = $_GET['prefix'];
  	$deptId;
 
 	$sql = "SELECT *
@@ -24,8 +25,8 @@
 		echo json_encode($data);
 
     }else{
-	  	$sql = "INSERT INTO Services (departmentId, Name, DefaultNumber) 
-		VALUES ('$deptId' , '$Name' , '$DefaultNumber')";
+	  	$sql = "INSERT INTO Services (departmentId, Name, DefaultNumber, Prefix) 
+		VALUES ('$deptId' , '$Name' , '$DefaultNumber', '$prefix')";
 
 		if($con->query($sql) == TRUE ){
 			$data['status'] = 'success';

@@ -7,15 +7,16 @@
     var name = null;
     var deptName = null;
     var defaultNumber = null;
+    var prefix = null;
 
     name = $('#inputName').val();
     defaultNumber = $('#defaultNumber').val();
     deptName = $('#select').find(":selected").text();
+    prefix = $('#inputPrefix').val();
 
+    if(name.length > 0 && defaultNumber.length > 0 && deptName.length > 0 && prefix.length > 0){
 
-    if(name.length > 0 && defaultNumber.length > 0 && deptName.length > 0){
-
-        url = '../../php/addnewservice.php?name='+ name +'&defaultNumber='+ defaultNumber+ '&deptName='+ deptName + '';  
+        url = '../../php/addnewservice.php?name='+ name +'&defaultNumber='+ defaultNumber+ '&deptName='+ deptName + '&prefix='+ prefix + '';  
  
         $.post(url, $(this).serialize(),function(data) {
             if ( data['servicenametaken']  == 'taken') {

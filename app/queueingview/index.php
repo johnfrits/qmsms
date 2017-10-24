@@ -91,11 +91,18 @@
         cache: false,
         success: function(response) {
           res = JSON.parse(response);
+
+          if(count != res['Count']){
+              count = res['Count'];
+              location.reload();
+          }
+
           if (curr != res["CallID"]) {
               curr = res["CallID"];
               counterName = res["CounterName"].trim();
               ticketNumber = res["TicketNumber"];
               serviceName = res["ServiceName"];
+              prefix = res['Prefix'];
               counterName = counterName.replace(/\s/g, '');
              // get id
               var incrementer = 0;
@@ -107,17 +114,17 @@
                   ++incrementer;
 
                     if( this.id == counterName){
-                      $("#Prionumber" + incrementer).html(ticketNumber);
+                      $("#Prionumber" + incrementer).html(prefix+ticketNumber);
                       $("#Service" + incrementer).html(serviceName);
-                      messageVoice = ('TicketNumber' + ticketNumber + ' Please proceed to '+ counterName);
+                      messageVoice = ('TicketNumber' + prefix + ticketNumber + ' Please proceed to '+ counterName);
 
-                       $('#ding').get(0).play();
+                      $('#ding').get(0).play();
                       responsiveVoice.speak(messageVoice);
                       
-                      //  $("#Prionumber" + incrementer).blink({delay: 300});  
-                      // setTimeout(function(){
-                      //  $("#Prionumber" + incrementer).unblink();
-                      // }, 3000);
+                      $("#Prionumber" + incrementer).blink({delay: 300});  
+                      setTimeout(function(){
+                       $(".prio").unblink();
+                      }, 3000);
                   }
                 }
             });
@@ -141,6 +148,8 @@
               counterName = res["CounterName"].trim();
               ticketNumber = res["TicketNumber"];
               serviceName = res["ServiceName"];
+              prefix = res['Prefix'];
+              count = res['Count'];
               counterName = counterName.replace(/\s/g, '');
              // get id
               var incrementer = 0;
@@ -150,9 +159,9 @@
 
                   ++incrementer;
                   if( this.id == counterName){
-                      $("#Prionumber" + incrementer).html(ticketNumber);
+                      $("#Prionumber" + incrementer).html(prefix+ticketNumber);
                       $("#Service" + incrementer).html(serviceName);
-                      messageVoice = ('ENKKKKK TicketNumber' + ticketNumber + ' Please proceed to '+ counterName);
+                      messageVoice = ('TicketNumber' + prefix + ticketNumber + ' Please proceed to '+ counterName);
                       
                        $('#ding').get(0).play();
                       responsiveVoice.speak(messageVoice);
@@ -160,7 +169,7 @@
 
                        $("#Prionumber" + incrementer).blink({delay: 300});  
                       setTimeout(function(){
-                       $("#Prionumber" + incrementer).unblink();
+                       $(".prio").unblink();
                       }, 3000);
                   }
                 }

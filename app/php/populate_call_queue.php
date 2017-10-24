@@ -23,6 +23,7 @@
 
 		$sql = 'SELECT Customers.PhoneNumber, 
 					   Services.Name, 
+				       Services.Prefix, 
 					   Queues.TicketNumber,
 					   Queues.Called,
 					   Queues.CreatedDateTime
@@ -41,7 +42,7 @@
 	            <tr>
 	                <td>'. $row['Name'] .'</td>
 	                <td>'. $row['PhoneNumber'] .'</td>
-	                <td>'. $row['TicketNumber'] .'</td>
+	                <td>'. $row['Prefix'] .''. $row['TicketNumber'] .'</td>
 	                <td>'. ($row['Called'] == 1 ? 'Called' : 'Not Called') .'</td>
 	                <td>'. $row['CreatedDateTime'] .'</td>
 	            </tr>
@@ -56,6 +57,7 @@
 
 		$sql = 'SELECT Customers.PhoneNumber, 
 					   Services.Name, 
+					   Services.Prefix, 
 					   Queues.TicketNumber,
 					   Queues.Called,
 					   Queues.CreatedDateTime
@@ -73,7 +75,7 @@
 	            <tr>
 	                <td>'. $row['Name'] .'</td>
 	                <td>'. $row['PhoneNumber'] .'</td>
-	                <td>'. $row['TicketNumber'] .'</td>
+                  	<td>'. $row['Prefix'] .''. $row['TicketNumber'] .'</td>
 	                <td>'. ($row['Called'] == 1 ? 'Called' : 'Not Called') .'</td>
 	                <td>'. $row['CreatedDateTime'] .'</td>
 	            </tr>

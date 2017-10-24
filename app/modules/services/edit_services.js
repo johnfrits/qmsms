@@ -17,6 +17,8 @@
                 var deptName =  data["deptName"];  
                 $('#select').append('<option>'+ deptName +'</option>')
                 $("#select").val(data["deptName"]);
+                $("#inputName").val(data["name"]);  
+                $("#inputPrefix").val(data["prefix"]); 
             } 
         },'JSON');
 

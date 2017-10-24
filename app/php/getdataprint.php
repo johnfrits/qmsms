@@ -73,7 +73,7 @@
 		$data['ticketNumber'] = $ticketNumber;
 	}
 
-	$sql = "SELECT s.Name AS ServiceName, d.name AS DepartmentName
+	$sql = "SELECT s.Name AS ServiceName, d.name AS DepartmentName, s.Prefix AS Prefix
 			FROM services s
 			LEFT JOIN department d ON d.departmentId = s.departmentId
 			WHERE ServiceID = $serviceId";
@@ -83,8 +83,9 @@
 			while ($row = $result->fetch_assoc()) {
 				$serviceName = $row['ServiceName'];
 				$departName = $row['DepartmentName'];
+				$prefix = $row['Prefix'];
 			}
-
+			$data['Prefix'] = $prefix;
 			$data['ServiceName'] = $serviceName;
 		 	$data['DepartmentName'] = $departName;
 

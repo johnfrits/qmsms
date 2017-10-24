@@ -23,9 +23,8 @@
         
             </h2>
           </td>
-          <td>
-            <h2 id="Prionumber'.$counterCount.'">
-            
+          <td id="unblink">
+            <h2 class="prio" id="Prionumber'.$counterCount.'">
             </h2>
           </td>
           </tr>';
