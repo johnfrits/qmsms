@@ -9,7 +9,8 @@
 
  	$sql = "SELECT *
  			FROM   queues  
-			WHERE  ServiceID  = '$serviceId'";
+			WHERE  ServiceID  = $serviceId";
+
 
 	$result = $con->query($sql);
 
@@ -33,7 +34,8 @@
 
 		$sql = "SELECT MAX(TicketNumber) as TicketNumber, CreatedDateTime
 				FROM queues 
-				WHERE ServiceID = '$serviceId'";
+				WHERE ServiceID = '$serviceId'	
+				AND CreatedDateTime > CURRENT_DATE";
 
 		$result = $con->query($sql);
 
@@ -94,11 +96,13 @@
 		$sql = "SELECT *
 		FROM   queues  
 		WHERE  Called  = 0
-		AND ServiceID = $serviceId";
+		AND ServiceID = $serviceId
+		AND CreatedDateTime > CURRENT_DATE";
+
 		$result = $con->query($sql);
 		$waiting = $result->num_rows;
 		$data['waiting'] = $waiting;
-		//textTicket($customerInput, $ticketNumber)
+		
 	   	$sql = "INSERT INTO queues (ServiceID, CustomerID, TicketNumber) 
 		  		VALUES ('$serviceId', '$customerId' ,'$ticketNumber')";
 

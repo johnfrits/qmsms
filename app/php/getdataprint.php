@@ -11,16 +11,17 @@
 
  	$sql = "SELECT *
  			FROM   queues  
-			WHERE  ServiceID  = '$serviceId'";
+			WHERE  ServiceID  = $serviceId";
 
 	$result = $con->query($sql);
 
 
-	if($result->num_rows >= 1){
+	if($result->num_rows >= 1){ 
 
 	$sql = "SELECT MAX(TicketNumber) as TicketNumber, CreatedDateTime
 				FROM queues 
-				WHERE ServiceID = '$serviceId'";
+				WHERE ServiceID = '$serviceId'
+				AND CreatedDateTime > CURRENT_DATE";
 
 		$result = $con->query($sql);
 
@@ -54,8 +55,6 @@
 			$data['newticket'] = false;
 		}
 
-		
-		
 	}else{
 		// do this when theres no first queue
 		$sql = "SELECT DefaultNumber 
@@ -100,7 +99,8 @@
 		$sql = "SELECT *
 		FROM   queues  
 		WHERE  Called  = 0
-		AND ServiceID = $serviceId";
+		AND ServiceID = $serviceId
+		AND CreatedDateTime > CURRENT_DATE";
 
 		$result = $con->query($sql);
 

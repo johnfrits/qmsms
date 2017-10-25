@@ -13,6 +13,7 @@
 		$onqueue = '';
 		$served = '';
 		$name = '';
+		$prefix = '';
 
 
 		if(isset($_GET['counterid'])){
@@ -92,6 +93,17 @@
 
 				if($con->query($sql) == TRUE){
 
+					//get prefix
+					$sql = "SELECT *
+					FROM services
+					WHERE ServiceID = $serviceid";
+
+					$result = $con->query($sql);
+
+					while ($row = $result->fetch_assoc()) {
+						$prefix = $row['Prefix'];
+					}
+
 					// get onqueue
 					$sql = 'SELECT *
 					FROM queues
@@ -126,7 +138,7 @@
 						$data['queueid'] = $queueid;
 						$data['onqueue'] = $onqueue;
 						$data['name'] = $name;
-						$data['TicketNumber'] = $ticketNumber;
+						$data['TicketNumber'] = $prefix . $ticketNumber;
 						$data['served'] = $served;
 						echo json_encode($data);	
 					}else{
