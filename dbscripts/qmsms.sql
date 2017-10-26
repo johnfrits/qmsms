@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2017 at 01:41 PM
+-- Generation Time: Oct 26, 2017 at 05:38 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -41,10 +41,12 @@ CREATE TABLE `calls` (
 --
 
 INSERT INTO `calls` (`CallID`, `QueueID`, `CountersID`, `UsersID`, `CalledDateTime`) VALUES
-(49, 90, 22, 1, '2017-10-24 13:24:06'),
-(50, 91, 22, 1, '2017-10-24 18:52:50'),
-(51, 92, 22, 1, '2017-10-24 18:53:21'),
-(52, 93, 22, 1, '2017-10-24 19:30:38');
+(56, 122, 28, 1, '2017-10-26 11:27:16'),
+(57, 123, 28, 1, '2017-10-26 11:31:15'),
+(58, 123, 28, 1, '2017-10-26 11:31:32'),
+(59, 124, 28, 1, '2017-10-26 11:31:54'),
+(60, 125, 29, 2, '2017-10-26 11:36:43'),
+(61, 126, 29, 2, '2017-10-26 11:36:52');
 
 -- --------------------------------------------------------
 
@@ -64,12 +66,8 @@ CREATE TABLE `counters` (
 --
 
 INSERT INTO `counters` (`CountersID`, `Name`, `AssignedService`, `status`) VALUES
-(22, 'Counter 1', 30, 'Active'),
-(23, 'Counter 2', 30, 'Active'),
-(24, 'Counter 3', 30, 'Active'),
-(25, 'Counter 4', 30, 'Active'),
-(26, 'Counter 5', 30, 'Active'),
-(27, 'Counter 6', 30, 'Active');
+(28, 'Counter 1', 35, 'Active'),
+(29, 'Counter 2', 36, 'Active');
 
 -- --------------------------------------------------------
 
@@ -87,60 +85,11 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`CustomerID`, `PhoneNumber`) VALUES
-(44, 'printed'),
-(45, 'printed'),
-(46, 'printed'),
-(47, 'printed'),
-(48, 'printed'),
-(49, 'printed'),
-(50, 'printed'),
-(51, 'printed'),
-(52, 'printed'),
-(53, 'printed'),
-(54, 'printed'),
-(55, 'printed'),
-(56, 'printed'),
-(57, 'printed'),
-(58, 'printed'),
-(59, 'printed'),
-(60, 'printed'),
-(61, 'printed'),
-(62, 'printed'),
-(63, 'printed'),
-(64, 'printed'),
-(65, 'printed'),
-(66, 'printed'),
-(67, 'printed'),
-(68, 'printed'),
-(69, 'printed'),
-(70, 'printed'),
-(71, 'printed'),
-(72, 'printed'),
-(73, 'printed'),
-(74, 'printed'),
-(75, 'printed'),
-(76, '09179545286'),
-(77, 'printed'),
-(78, 'printed'),
-(79, 'printed'),
-(80, 'printed'),
-(81, 'printed'),
-(82, 'printed'),
-(83, 'printed'),
-(84, 'printed'),
-(85, 'printed'),
-(86, '09179545286'),
-(87, '09179545286'),
-(88, 'printed'),
-(89, 'printed'),
-(90, 'printed'),
-(91, 'printed'),
-(92, 'printed'),
-(93, 'printed'),
-(94, 'printed'),
-(95, '09179545286'),
-(96, 'printed'),
-(97, 'printed');
+(122, 'printed'),
+(123, 'printed'),
+(124, 'printed'),
+(125, 'printed'),
+(126, 'printed');
 
 -- --------------------------------------------------------
 
@@ -160,7 +109,8 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`departmentId`, `name`, `datecreated`, `status`) VALUES
-(10, 'Finance', '2017-10-13 16:04:55', 'Active');
+(12, 'Finance', '2017-10-26 11:17:28', 'Active'),
+(13, 'Management', '2017-10-26 11:33:32', 'Active');
 
 -- --------------------------------------------------------
 
@@ -183,14 +133,11 @@ CREATE TABLE `queues` (
 --
 
 INSERT INTO `queues` (`QueueID`, `ServiceID`, `CustomerID`, `TicketNumber`, `Called`, `Missed`, `CreatedDateTime`) VALUES
-(90, 30, 90, 1001, 1, 0, '2017-10-24 12:13:05'),
-(91, 30, 91, 1002, 1, 0, '2017-10-24 12:13:10'),
-(92, 30, 92, 1003, 1, 0, '2017-10-24 12:13:13'),
-(93, 30, 93, 1004, 1, 0, '2017-10-24 12:13:27'),
-(94, 30, 94, 1005, 0, 0, '2017-10-24 12:52:48'),
-(95, 30, 95, 1006, 0, 0, '2017-10-24 12:57:07'),
-(96, 30, 96, 1007, 0, 0, '2017-10-24 13:06:36'),
-(97, 30, 97, 1008, 0, 0, '2017-10-24 13:10:54');
+(122, 35, 122, 1001, 1, 0, '2017-10-26 11:18:33'),
+(123, 35, 123, 1002, 1, 0, '2017-10-26 11:18:38'),
+(124, 35, 124, 1003, 1, 0, '2017-10-26 11:18:51'),
+(125, 36, 125, 2001, 1, 0, '2017-10-26 11:34:58'),
+(126, 36, 126, 2002, 1, 0, '2017-10-26 11:35:02');
 
 -- --------------------------------------------------------
 
@@ -212,10 +159,8 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`ServiceID`, `departmentId`, `Name`, `DefaultNumber`, `Prefix`, `status`) VALUES
-(30, 10, 'Payment', 1000, 'pay', 'Active'),
-(31, 10, 'testsss', 2000, 'tse', 'Active'),
-(32, 10, 'Tessttt', 3000, 'tes', 'Active'),
-(33, 10, 'fasfdas', 4000, 'fin', 'Active');
+(35, 12, 'Payment', 1000, 'py', 'Active'),
+(36, 13, 'Ticket Manage', 2000, 'tcm', 'Active');
 
 -- --------------------------------------------------------
 
@@ -240,7 +185,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `Name`, `Username`, `Password`, `Email`, `Role`, `AssignedCounterID`, `status`, `LoggedIn`) VALUES
-(1, 'Jade', 'admin', 'admin', 'jade@gmail.com', 'Administrator', 22, 'Active', 'Yes');
+(1, 'Jade', 'admin', 'admin', 'jade@gmail.com', 'Administrator', 28, 'Active', 'Yes'),
+(2, 'frlysqw', 'staff', 'staff', 'weq@gmail.com', 'Staff', 29, 'Active', 'Yes');
 
 --
 -- Indexes for dumped tables
@@ -296,37 +242,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `calls`
 --
 ALTER TABLE `calls`
-  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `CallID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT for table `counters`
 --
 ALTER TABLE `counters`
-  MODIFY `CountersID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `CountersID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 --
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `departmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `departmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `queues`
 --
 ALTER TABLE `queues`
-  MODIFY `QueueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `QueueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `ServiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `ServiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;COMMIT;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

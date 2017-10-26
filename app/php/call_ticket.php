@@ -69,14 +69,14 @@
 
 		if($callagain == false){
 
-			$sql = 'SELECT * 
+			$sql = "SELECT * 
 				FROM queues 
 				WHERE CreatedDateTime 
 				= (	SELECT MIN(CreatedDateTime) AS CreatedDateTime 
 					FROM queues 
 					WHERE Called = 0
-					AND ServiceID = '.$serviceid.' 
-					AND CreatedDateTime > CURRENT_DATE )';
+					AND ServiceID = $serviceid
+					AND CreatedDateTime > CURRENT_DATE )";
 
 			$result = $con->query($sql);
 
